@@ -103,7 +103,7 @@ function downloadCard(){if(!shareFile||!cardURL)return;const a=document.createEl
 async function nativeShare(destination){
   if(!shareFile)return;
   if(navigator.canShare?.({files:[shareFile]})){
-    try{await navigator.share({files:[shareFile],title:'I embroidered this for you',text:'I embroidered this for you.'});shareNote.textContent='Shared.';}catch(error){if(error.name!=='AbortError'){downloadCard();shareNote.textContent='Sharing wasn’t available. Your card is saved — attach it in '+destination+'.';}}
+    try{await navigator.share({files:[shareFile],text:'I embroidered this for you.'});shareNote.textContent='Shared.';}catch(error){if(error.name!=='AbortError'){downloadCard();shareNote.textContent='Sharing wasn’t available. Your card is saved — attach it in '+destination+'.';}}
   }else{downloadCard();shareNote.textContent='Card saved. '+(destination==='Instagram'?'Open Instagram and choose the saved image for your post or story.':destination==='Messages'?'Open Messages and attach the saved image to a conversation.':'You can attach it in Messages, X, or Instagram.');}
 }
 document.querySelector('#native-share').onclick=()=>nativeShare('your favorite app');
