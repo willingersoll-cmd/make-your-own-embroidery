@@ -348,3 +348,10 @@ html[data-photo=corner] .reference-print img{height:124px}
 html[data-photo] .reference-print:hover,html[data-photo] .reference-print:focus-visible,html[data-photo] .reference-print[aria-pressed=true]{transform:translateY(5px) rotate(0deg)}
 @media(min-width:901px) and (max-height:740px){html[data-photo] .reference-print{width:132px;bottom:-104px;padding:6px}html[data-photo] .reference-print img{height:85px}html[data-photo=landscape] .reference-print{width:175px;bottom:-98px}html[data-photo=landscape] .reference-print img{height:78px}}
 @media(max-width:900px){html[data-photo] .box-assembly{margin-bottom:165px}html[data-photo=corner] .reference-print{right:0}}
+
+/* A second, dotted stock card sits behind the landscape reference print. */
+.reference-upload{position:absolute;z-index:0;left:20px;bottom:-130px;width:205px;height:141px;padding:20px 18px;background:#f8f3e6;border:1px solid #d2c8b1;outline:1px dotted #aeb298;outline-offset:-10px;border-radius:2px;box-shadow:1px 3px 5px #5b463325;transform:rotate(6deg);text-align:left;transition:transform .2s,box-shadow .2s;color:#656c52}
+.reference-upload span{display:block;max-width:90px;font:20px/1.35 var(--hand)}
+.reference-upload:hover,.reference-upload:focus-visible{transform:translate(-5px,5px) rotate(2deg);box-shadow:2px 6px 10px #5b463330}
+@media(min-width:901px) and (max-height:740px){.reference-upload{bottom:-106px;width:178px;height:113px;left:14px;padding:17px 15px}.reference-upload span{font-size:17px;max-width:80px}}
+@media(max-width:900px){.reference-upload{left:4px;bottom:-145px;width:190px;height:140px}.reference-upload span{font-size:18px;max-width:86px}}

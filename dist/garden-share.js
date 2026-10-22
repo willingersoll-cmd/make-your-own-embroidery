@@ -136,3 +136,5 @@ status();
  cloth.addEventListener('pointerleave',()=>pointer.hidden=true);
  cloth.addEventListener('pointercancel',()=>pointer.hidden=true);
 })();
+
+document.querySelector('#reference-upload').onclick=()=>document.querySelector('#image-upload').click();
