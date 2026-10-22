@@ -221,3 +221,18 @@ body{background-color:#dce3e5;background-image:linear-gradient(120deg,#f7fafb55,
 .brand{font-size:27px}.introduction .invitation{font-size:25px;line-height:1.4}.canvas-hint{font-size:22px}.hoop-holder>.completion h3{font-size:30px}#share-dialog .share-copy h2{font-size:30px}
 .sewing-box .finish-button{justify-self:center;width:auto;min-width:174px;min-height:38px;padding:7px 22px;font-size:16px;line-height:1.35;border-radius:4px}
 @media(max-width:520px){.brand{font-size:25px}.introduction .invitation{font-size:23px}.sewing-box .finish-button{min-height:40px}}
+
+/* Sun-warmed ash and unbleached linen; fine grain instead of craft decoration. */
+:root{--ink:#474638;--muted:#827d6a;--sage:#69745b;--rust:#986e52;--ground:#e7d6ba;--line:#d3c9b5}
+body{background-color:#e7d6ba;background-image:linear-gradient(125deg,#fff6dc8c,transparent 65%),url('assets/afternoon-wood.svg');background-size:auto,1100px 770px}
+.brand,.introduction .invitation{color:#454737}.brand-dot,.intro-share{color:#986e52}
+.upload-bar.sewing-box{--wood:#a58b6a;--grain:url('assets/afternoon-wood.svg');border-color:#a58b6a;background:#e6dfcf;box-shadow:inset 0 0 0 1px #c7b18f,0 6px 0 -1px #8e7559,0 16px 25px -12px #5b463338}
+.box-lid{border-color:#ac9473;background:#e8e0cf;box-shadow:inset 0 1px 4px #5b463318,0 1px #8e7559}.box-opening-cover{border-color:#a58b6a;background:#bfa57e url('assets/afternoon-wood.svg') center/cover;box-shadow:inset 0 0 0 1px #d8c4a1,0 3px 8px #5b463325}.box-opening-cover:before{border-color:#ede1c755}
+.box-hinge,.sewing-box:after,.box-opening-cover:after,.hoop-clasp{filter:saturate(.45)}
+.sewing-box .garden-toolbar,.sewing-box .source-section,.sewing-box .upload-options fieldset,.sewing-box .needle-option{background:#f2eee3;border-color:#cbbfa9}.sewing-box .upload-button{background:#fcfaf4;border-color:#e0d8c8}.sewing-box .control-label{background:#f2eee3;color:#686952}
+.sewing-box .segmented button,.sewing-box .size-options button{color:#73745f}.sewing-box .segmented button[aria-pressed=true],.sewing-box .size-options button[aria-pressed=true]{background:#e7e9da;border-color:#a8b094;color:#4c5940}
+.sewing-box .finish-button,.sewn-button,#share-dialog .share-copy>.sewn-button{background:#69745b;border-color:#69745b;color:#fffdf4}.sewing-box .finish-button:hover{background:#58664c}
+.sewing-box .actions{border-color:#ddd6c5}.sewing-box .guide-toggle,.sewing-box .guide-toggle>span,.sewing-box #reset,.sewing-box .needle-option strong,.sewing-box #garden-count{color:#4d5641}.count-total,.count-unit,.sewing-box #garden-status,.sewing-box .sample-button,.sewing-box .upload-sub{color:#7a7c68}
+.sewing-box .guide-toggle input,.sewing-box .needle-option input{background:#d0d3c3;border-color:#b0b79f}.sewing-box .guide-toggle input:checked,.sewing-box .needle-option input:checked{background:#738063;border-color:#738063}
+.art-frame{background:#f4f0e5 url('assets/afternoon-linen.svg') center/360px 360px;box-shadow:1px 14px 25px -7px #58472d25,inset 0 0 40px #8c795317}.art-frame:before{border-color:#bca580;background-image:none;box-shadow:inset 0 2px 5px #6a503026,0 0 0 1px #a38c6840}.art-frame:after{background:radial-gradient(ellipse at 35% 20%,#fff8dc29,transparent 80%)}
+.canvas-hint,.board-heading>button,.hoop-holder>.completion{background:#faf7ef;border-color:#d7cfbc;color:#5b624c}.board-heading>button:hover{background:#fffdf5}.tree-shadow{opacity:.44}footer,footer p,footer>span{color:#7c7d67}footer{border-color:#a7977424}#share-dialog{background:#faf7ef;border-color:#d7cfbc;color:#4d5641}
