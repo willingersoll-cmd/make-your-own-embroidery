@@ -265,3 +265,12 @@ html[data-progress-layout=footer] .sewing-box #reset{grid-column:2;grid-row:2;ju
 .tree-shadow{opacity:.38}
 
 html[data-progress-layout=inline] .sewing-box .finish-button{align-self:center}html[data-progress-layout=inline] .sewing-box #garden-status,html[data-progress-layout=footer] .sewing-box #garden-status{align-self:flex-start;text-align:left}
+
+@media(hover:hover) and (pointer:fine){.art-frame,.art-frame *{cursor:none}.art-frame:has(.reference-view:not([hidden])),.art-frame:has(.reference-view:not([hidden])) *{cursor:default}}
+.sewing-pointer{position:fixed;width:64px;height:64px;z-index:35;pointer-events:none;transform-origin:3px 44px}
+.sewing-pointer img{position:absolute;left:0;top:0;width:48px;height:48px;filter:drop-shadow(0 1px 1px #493c3225)}
+.sewing-pointer svg{position:absolute;inset:0;width:64px;height:64px;overflow:visible;opacity:0;transition:opacity .12s}.sewing-pointer path{fill:none;stroke:var(--needle-thread,#986b4e);stroke-width:1;stroke-linecap:round}
+body:has(.art-frame[data-stitching=true]) .sewing-pointer{animation:needle-cursor-sew .48s ease-in-out infinite}
+body:has(.art-frame[data-stitching=true]) .sewing-pointer svg{opacity:1}
+@keyframes needle-cursor-sew{0%,100%{transform:translateY(0) rotate(-2deg)}45%{transform:translateY(-3px) rotate(4deg)}72%{transform:translateY(1px) rotate(-1deg)}}
+@media(prefers-reduced-motion:reduce){body:has(.art-frame[data-stitching=true]) .sewing-pointer{animation:none}.sewing-pointer svg{transition:none}}

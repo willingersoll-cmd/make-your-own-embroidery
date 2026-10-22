@@ -24,6 +24,7 @@ function indexStitches(){
 indexStitches();
 const hoverRadius=64;
 function status(){
+  document.querySelector('#art-frame').dataset.stitching=String(pending.size>0);
   const done=stitches.filter(s=>s.state==='done').length;
   document.querySelector('#count-completed').textContent=done.toLocaleString();
   document.querySelector('#count-total').textContent=stitches.length.toLocaleString();
@@ -53,6 +54,7 @@ function activateAt(x,y){
 let liveStitches=[],needleLead=null;
 function render(live=[]){
   liveStitches=live;
+  if(live.length)document.body.style.setProperty('--needle-thread',live[0].s.color);
   ctx.clearRect(0,0,W,H);if(document.querySelector('#guides').checked)ctx.drawImage(guideCanvas,0,0,W,H);
   for(let layer=0;layer<2;layer++){
     zones.forEach(z=>{const item=z.layers[layer];if(item)ctx.drawImage(item.canvas,z.bounds.x,z.bounds.y,z.bounds.w,z.bounds.h);});

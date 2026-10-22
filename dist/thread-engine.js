@@ -419,9 +419,14 @@ window.ThreadStudy = (() => {
     const t=s.lightweight?p*p:smooth(p*p),points=cubic(s.a,s.c,s.d,s.b,60),index=t*60,j=Math.min(59,Math.floor(index)),f=index-j;
     const head={x:mix(points[j].x,points[j+1].x,f),y:mix(points[j].y,points[j+1].y,f)};
     const angle=Math.atan2(points[j+1].y-points[j].y,points[j+1].x-points[j].x)-.38*(1-smooth(p/.65))+.24*smooth((p-.7)/.3);
-    const length=24*reveal,width=1.3;
-    ctx.save();ctx.translate(head.x,head.y);ctx.rotate(angle);ctx.globalAlpha=.95;
+    const length=30;
+    ctx.save();ctx.translate(head.x,head.y-Math.sin(p*Math.PI)*2);ctx.rotate(angle+Math.sin(p*Math.PI*2)*.07);ctx.globalAlpha=.95*reveal;
     if(steelNeedle.complete&&steelNeedle.naturalWidth){
+      // A short colored tail passes through the eye, following the needle's pull.
+      ctx.beginPath();ctx.moveTo(-length*.08,0);
+      ctx.bezierCurveTo(-length*.3,-5*(1-p),-length*.62,-3,-length*.8,2*(1-p));
+      ctx.strokeStyle=s.color;ctx.lineWidth=Math.min(1.1,Math.max(.65,s.width*.3));ctx.lineCap='round';ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-length*.08,0);ctx.quadraticCurveTo(-length*.17,2,-length*.23,1);ctx.stroke();
       ctx.translate(length*.45,0);ctx.rotate(-Math.PI*.75);
       const size=length*.85;ctx.drawImage(steelNeedle,-size/2,-size/2,size,size);
     }

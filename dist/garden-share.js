@@ -121,3 +121,18 @@ document.querySelector('#copy-card').onclick=async()=>{
   catch{shareNote.textContent='Image copying isn’t available here. Use Save image to attach the card instead.';}
 };
 status();
+
+/* The cursor gives immediate sewing feedback while nearby stitches are active. */
+(()=>{
+ const cloth=document.querySelector('#art-frame');
+ if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+ const pointer=document.createElement('div');pointer.className='sewing-pointer';pointer.hidden=true;
+ pointer.setAttribute('aria-hidden','true');pointer.innerHTML='<img src="assets/steel-needle-cursor.png" alt=""><svg viewBox="0 0 64 64"><path d="M41 5C36 0 30 2 32 8S45 14 51 9M41 5C38 8 37 10 38 13"/></svg>';
+ document.body.append(pointer);
+ cloth.addEventListener('pointermove',e=>{
+   if(document.querySelector('#reference-toggle').checked){pointer.hidden=true;return;}
+   pointer.hidden=false;pointer.style.left=(e.clientX-3)+'px';pointer.style.top=(e.clientY-44)+'px';
+ });
+ cloth.addEventListener('pointerleave',()=>pointer.hidden=true);
+ cloth.addEventListener('pointercancel',()=>pointer.hidden=true);
+})();
