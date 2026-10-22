@@ -87,7 +87,7 @@ footer p,footer>span{font-size:13px;line-height:1.5;color:#68705d}footer{flex-wr
 @media(max-width:520px){#garden-count{font-size:26px}.progress{gap:10px}.garden-toolbar{gap:18px}}
 
 /* The cursor's pointed tip is the hover target, just like a real needle. */
-@media(hover:hover) and (pointer:fine){.art-frame,.art-frame *{cursor:url('assets/needle-cursor.svg') 3 29,crosshair}.art-frame:has(.reference-view:not([hidden])),.art-frame:has(.reference-view:not([hidden])) *{cursor:default}}
+@media(hover:hover) and (pointer:fine){.art-frame,.art-frame *{cursor:url('assets/steel-needle-cursor.png') 3 44,crosshair}.art-frame:has(.reference-view:not([hidden])),.art-frame:has(.reference-view:not([hidden])) *{cursor:default}}
 
 /* Keep the canvas clear; progress and actions live in the sewing box. */
 .sewing-box .garden-toolbar{display:flex;flex-direction:column;align-items:stretch;gap:14px;margin:0 0 20px;padding:15px 12px;border:1px solid #ad9974;border-radius:3px;background:linear-gradient(110deg,#faf5e5,#ece6d0);box-shadow:inset 0 1px 3px #78633c14,0 1px 0 #f7edd5;grid-column:1/-1}
@@ -236,3 +236,5 @@ body{background-color:#e7d6ba;background-image:linear-gradient(125deg,#fff6dc8c,
 .sewing-box .guide-toggle input,.sewing-box .needle-option input{background:#d0d3c3;border-color:#b0b79f}.sewing-box .guide-toggle input:checked,.sewing-box .needle-option input:checked{background:#738063;border-color:#738063}
 .art-frame{background:#f4f0e5 url('assets/afternoon-linen.svg') center/360px 360px;box-shadow:1px 14px 25px -7px #58472d25,inset 0 0 40px #8c795317}.art-frame:before{border-color:#bca580;background-image:none;box-shadow:inset 0 2px 5px #6a503026,0 0 0 1px #a38c6840}.art-frame:after{background:radial-gradient(ellipse at 35% 20%,#fff8dc29,transparent 80%)}
 .canvas-hint,.board-heading>button,.hoop-holder>.completion{background:#faf7ef;border-color:#d7cfbc;color:#5b624c}.board-heading>button:hover{background:#fffdf5}.tree-shadow{opacity:.44}footer,footer p,footer>span{color:#7c7d67}footer{border-color:#a7977424}#share-dialog{background:#faf7ef;border-color:#d7cfbc;color:#4d5641}
+
+.sewing-box .needle-option img{width:36px;height:30px;object-fit:contain;flex-shrink:0;transform:rotate(24deg);filter:drop-shadow(0 1px 1px #47382525)}

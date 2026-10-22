@@ -2,6 +2,7 @@
    the same strand model, so tightening changes the thread instead of revealing a mask. */
 window.ThreadStudy = (() => {
   const TAU = Math.PI * 2;
+  const steelNeedle=new Image();steelNeedle.src="assets/steel-needle.png";
   let cottonSource=null,sourceCore=1;
   const dyed=new Map();
   const imageReady=new Promise(resolve=>{
@@ -420,13 +421,13 @@ window.ThreadStudy = (() => {
     const angle=Math.atan2(points[j+1].y-points[j].y,points[j+1].x-points[j].x)-.38*(1-smooth(p/.65))+.24*smooth((p-.7)/.3);
     const length=24*reveal,width=1.3;
     ctx.save();ctx.translate(head.x,head.y);ctx.rotate(angle);ctx.globalAlpha=.95;
-    ctx.save();ctx.translate(.4,1.2);ctx.beginPath();ctx.moveTo(-3,-width);ctx.lineTo(length,0);ctx.lineTo(-3,width);ctx.closePath();ctx.fillStyle='#5b594021';ctx.fill();ctx.restore();
-    const silver=ctx.createLinearGradient(0,-width,0,width);silver.addColorStop(0,'#f9fbf7');silver.addColorStop(.42,'#b6bdbb');silver.addColorStop(.58,'#e4e9e6');silver.addColorStop(1,'#858e8b');
-    ctx.fillStyle=silver;ctx.strokeStyle='#818b875c';ctx.lineWidth=.35;ctx.beginPath();ctx.moveTo(-3,-width);ctx.quadraticCurveTo(length*.45,-width*.75,length,0);ctx.quadraticCurveTo(length*.45,width*.75,-3,width);ctx.quadraticCurveTo(-5,0,-3,-width);ctx.fill();ctx.stroke();
-    ctx.beginPath();ctx.ellipse(-1.8,0,1.3,.48,0,0,TAU);ctx.fillStyle='#686e60';ctx.fill();
-    // One small colored turn connects the strand to the eye.
-    ctx.beginPath();ctx.moveTo(-5,1);ctx.quadraticCurveTo(-3,-1,-1.8,0);ctx.lineWidth=Math.min(.8,s.width*.5);ctx.strokeStyle=s.color;ctx.stroke();ctx.restore();
+    if(steelNeedle.complete&&steelNeedle.naturalWidth){
+      ctx.translate(length*.45,0);ctx.rotate(-Math.PI*.75);
+      const size=length*.85;ctx.drawImage(steelNeedle,-size/2,-size/2,size,size);
+    }
+    ctx.restore();
   }
+
   function fieldStitch(ctx,s,p=1){
     if(s.lightweight){
       // Image fields can contain thousands of strands. Layered plies retain
