@@ -122,3 +122,16 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 .introduction{padding:25px 0 28px;max-width:900px}.introduction .invitation{font:500 clamp(24px,2.2vw,29px)/1.45 var(--hand);letter-spacing:-.6px;color:#394532;max-width:850px;margin:0}.intro-share{color:#985238}
 @media(max-width:900px){.introduction{padding:25px 0 26px}.introduction .invitation{font-size:25px;line-height:1.45;max-width:650px}}
 @media(max-width:520px){.introduction{padding:25px 0 24px}.introduction .invitation{font-size:22px;line-height:1.5;letter-spacing:-.4px}.introduction .invitation br{display:none}}
+
+/* The closed wooden lid lifts away on arrival, revealing the lined tray. */
+.box-opening-cover{position:absolute;inset:-9px;bottom:-15px;z-index:20;display:grid;place-items:center;border:11px solid #b58b60;border-bottom-width:15px;border-radius:11px;background-color:#c29c71;background-image:linear-gradient(110deg,#f6dfb433,transparent 55%,#80532b12),url('assets/table-grain.svg');background-size:auto,768px 512px;box-shadow:inset 0 0 0 2px #dfbd8e,inset 0 0 0 5px #a67d522e,0 3px 8px #5d3e232b;transform-origin:50% 0;backface-visibility:hidden;animation:sewing-box-open 1150ms cubic-bezier(.3,0,.25,1) both;}
+.box-opening-cover:before{content:'';position:absolute;inset:12px;border:1px solid #906a4238;box-shadow:0 1px 0 #edcea85c;border-radius:4px;}
+.box-opening-cover:after{content:'';position:absolute;bottom:-18px;left:calc(50% - 13px);width:26px;height:22px;border:1px solid #a78b4f;border-radius:3px;background:radial-gradient(ellipse at 50% 65%,#7f6a3d 0 1px,transparent 2px),linear-gradient(105deg,#c2a86a,#e1cc91 45%,#b69a5d);box-shadow:0 2px 3px #755c3020;}
+.box-opening-cover svg{width:90px;height:70px;fill:none;stroke-linecap:round;opacity:.52;filter:sepia(1);}
+.sewing-box .box-lid{animation:sewing-box-hinge 1150ms cubic-bezier(.3,0,.25,1) both;}
+.sewing-box>.garden-toolbar,.sewing-box>.source-section,.sewing-box>.upload-options{animation:sewing-box-reveal 1150ms ease-out both;}
+@keyframes sewing-box-open{0%,12%{transform:perspective(1800px) rotateX(0);opacity:1;visibility:visible}72%{opacity:1}99%{visibility:visible}100%{transform:perspective(1800px) rotateX(-105deg);opacity:0;visibility:hidden}}
+@keyframes sewing-box-hinge{0%,32%{transform:perspective(550px) rotateX(84deg);opacity:0}65%{opacity:1}100%{transform:perspective(550px) rotateX(-12deg);opacity:1}}
+@keyframes sewing-box-reveal{0%,35%{opacity:0;transform:translateY(6px)}78%,100%{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.box-opening-cover{inset:-8px;bottom:-13px;border-width:10px;border-bottom-width:13px}}
+@media(prefers-reduced-motion:reduce){.box-opening-cover{display:none}.sewing-box .box-lid{opacity:1;transform:perspective(550px) rotateX(-12deg)}.sewing-box>.garden-toolbar,.sewing-box>.source-section,.sewing-box>.upload-options{opacity:1;transform:none}}
