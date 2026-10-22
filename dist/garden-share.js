@@ -130,7 +130,7 @@ status();
  pointer.setAttribute('aria-hidden','true');pointer.innerHTML='<img src="assets/steel-needle-cursor.png" alt=""><svg viewBox="0 0 64 64"><path d="M41 5C36 0 30 2 32 8S45 14 51 9M41 5C38 8 37 10 38 13"/></svg>';
  document.body.append(pointer);
  cloth.addEventListener('pointermove',e=>{
-   if(document.querySelector('#reference-toggle').checked){pointer.hidden=true;return;}
+   if(document.querySelector('#reference-toggle').getAttribute('aria-pressed')==='true'){pointer.hidden=true;return;}
    pointer.hidden=false;pointer.style.left=(e.clientX-3)+'px';pointer.style.top=(e.clientY-44)+'px';
  });
  cloth.addEventListener('pointerleave',()=>pointer.hidden=true);

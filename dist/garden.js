@@ -101,7 +101,7 @@ document.querySelector('#reset').onclick=()=>{
   document.querySelector('#frame-label').textContent='';status();render();
 };
 document.querySelector('#reference-toggle').onclick=e=>{
-  const view=document.querySelector('#reference-view');view.hidden=!view.hidden;e.currentTarget.setAttribute('aria-pressed',String(!view.hidden));e.currentTarget.textContent=view.hidden?(uploadedImage?'View original':'View reference'):'Back to embroidery';
+  const view=document.querySelector('#reference-view');view.hidden=!view.hidden;e.currentTarget.setAttribute('aria-pressed',String(!view.hidden));e.currentTarget.querySelector('span').textContent=view.hidden?'Original':'Back to stitches';e.currentTarget.setAttribute('aria-label',view.hidden?'Show original image':'Return to embroidery');
   document.querySelector('#sections').inert=!view.hidden;
 };
 ThreadStudy.imageReady.then(()=>{ready=true;status();render();document.querySelector('#art-frame').dataset.ready='true';reconvert();});
@@ -206,7 +206,7 @@ async function convertImage(image,filename){
     const sections=document.querySelector('#sections');sections.replaceChildren();
     zones.filter(z=>z.stitches.length).forEach(z=>{const anchor=z.stitches[Math.floor(z.stitches.length/2)];z.x=(anchor.a.x+anchor.b.x)/2;z.y=(anchor.a.y+anchor.b.y)/2;const b=document.createElement('button');b.className='section-trigger';b.style.left=z.x/W*100+'%';b.style.top=z.y/H*100+'%';b.setAttribute('aria-label','Embroider '+z.name.toLowerCase());b.dataset.name=z.name;b.onfocus=()=>activateAt(z.x,z.y);b.onclick=()=>activateAt(z.x,z.y);sections.append(b);});
     uploadedImage=image;document.querySelector('#reference-view img').src=uploadedURL;document.querySelector('#reference-view img').alt='Your uploaded source image';
-    document.querySelector('#reference-view').hidden=true;sections.inert=false;const ref=document.querySelector('#reference-toggle');ref.setAttribute('aria-pressed','false');ref.textContent='View original';
+    document.querySelector('#reference-view').hidden=true;sections.inert=false;const ref=document.querySelector('#reference-toggle');ref.setAttribute('aria-pressed','false');ref.querySelector('span').textContent='Original';ref.setAttribute('aria-label','Show original image');document.querySelector('#reference-print-image').src=uploadedURL;
     canvas.setAttribute('aria-label','Your uploaded image converted into individual cotton stitches. Move over the cloth to reveal the embroidery.');
     document.querySelector('#frame-label').textContent='';document.querySelector('#artwork-caption').textContent=filename+' · '+palette.length+' colors';
     message.textContent='';status();render();
