@@ -112,3 +112,8 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 @media(max-width:1100px) and (min-width:901px){.editor-layout{gap:26px}.garden{padding-top:18px}}
 @media(max-width:900px){.editor-layout{gap:28px;padding-top:8px}.garden{position:relative;top:auto;padding:0 0 20px}.upload-bar.sewing-box{transform:none}.board-heading{padding:0 12px 4px}.hoop-holder{padding-top:30px}.site-header{padding-top:21px}}
 @media(max-width:520px){.site-header{padding-top:19px}.brand{font-size:19px;padding:7px 10px}.introduction{padding-top:28px;padding-bottom:24px}.editor-layout{gap:28px}.board-heading>button{font-size:14px}.garden{padding-left:0;padding-right:0}.hoop-holder{padding-left:0;padding-right:0}}
+
+/* A compact title with a readable, proportionate instruction underneath. */
+.introduction{padding:27px 0 26px;max-width:850px}.introduction h1{font-size:clamp(34px,3.8vw,52px);line-height:1.16;letter-spacing:-1.6px;max-width:820px}.invitation{font-size:18px;line-height:1.5;margin:15px 0 0;max-width:580px;color:#535b43}.site-header{padding-top:22px}
+@media(max-width:900px){.introduction{padding-top:25px;padding-bottom:25px}.introduction h1{font-size:clamp(32px,4.7vw,42px);letter-spacing:-1px}.invitation{font-size:17px;line-height:1.5;margin-top:14px;max-width:520px}}
+@media(max-width:520px){.introduction{padding-top:24px;padding-bottom:23px}.introduction h1{font-size:30px;line-height:1.2;letter-spacing:-.8px}.invitation{font-size:16px;line-height:1.5;margin-top:13px;max-width:340px}.site-header{padding-top:18px}}
