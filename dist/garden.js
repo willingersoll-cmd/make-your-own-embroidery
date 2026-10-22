@@ -184,9 +184,10 @@ async function convertImage(image,filename){
   await new Promise(resolve=>setTimeout(resolve,30));
   try{
     const sample=document.createElement('canvas');sample.width=W;sample.height=H;const sx=sample.getContext('2d',{willReadFrequently:true});
-    const scale=Math.min((W-110)/image.naturalWidth,(H-110)/image.naturalHeight),width=image.naturalWidth*scale,height=image.naturalHeight*scale,left=(W-width)/2,top=(H-height)/2;
+    // Fill the square visible through the hoop, allowing the image edges to crop.
+    const scale=Math.max(H/image.naturalWidth,H/image.naturalHeight),width=image.naturalWidth*scale,height=image.naturalHeight*scale,left=(W-width)/2,top=(H-height)/2;
     sx.drawImage(image,left,top,width,height);
-    const step=Number(document.querySelector('#stitch-size').value),samples=outlineSamples(sx,step,document.querySelector('#line-detail').value);
+    const step=Number(document.querySelector('#stitch-size').value),samples=outlineSamples(sx,step,document.querySelector('#line-detail').value).filter(q=>Math.hypot(q.x-W/2,q.y-H/2)<=H/2);
     if(!samples.length)throw new Error('No clear lines found. Try Extra detail or a picture with stronger outlines.');
     const palette=paletteFor(samples),nextZones=[];
     for(let row=0;row<3;row++)for(let col=0;col<4;col++)nextZones.push({name:`Image area ${row*4+col+1}`,x:(col+.5)*W/4,y:(row+.5)*H/3,stitches:[],layers:[],bounds:{x:Math.max(0,col*W/4-20),y:Math.max(0,row*H/3-20),w:Math.min(W-col*W/4+20,W/4+40),h:Math.min(H-row*H/3+20,H/3+40)}});

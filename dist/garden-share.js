@@ -45,13 +45,13 @@ function buildCard(){
   const card=document.createElement('canvas');card.width=1080;card.height=format==='story'?1920:1080;const c=card.getContext('2d'),story=format==='story';
   c.fillStyle='#f4f0e5';c.fillRect(0,0,1080,card.height);
   c.lineWidth=.6;c.strokeStyle='#9586640b';for(let n=0;n<card.height;n+=4){c.beginPath();c.moveTo(0,n);c.lineTo(1080,n);c.stroke();}for(let n=0;n<1080;n+=4){c.beginPath();c.moveTo(n,0);c.lineTo(n,card.height);c.stroke();}
-  const top=story?420:172,radius=378,centerX=540,centerY=top+radius,artWidth=radius*2*.78,artHeight=artWidth*H/W,artX=centerX-artWidth/2,artY=centerY-artHeight/2;
+  const top=story?420:172,radius=378,centerX=540,centerY=top+radius,artHeight=radius*2,artWidth=artHeight*W/H,artX=centerX-artWidth/2,artY=centerY-artHeight/2;
   c.textAlign='center';
   c.fillStyle='#4a513c';c.font='500 49px "Shantell Sans"';c.fillText('Made of thread.',540,story?363:125);
   c.save();c.beginPath();c.arc(centerX,centerY,radius-11,0,Math.PI*2);c.clip();
   c.fillStyle='#eae4d1';c.fillRect(centerX-radius,top,radius*2,radius*2);
   c.strokeStyle='#8e805013';c.lineWidth=.65;for(let n=0;n<radius*2;n+=3){c.beginPath();c.moveTo(centerX-radius,top+n);c.lineTo(centerX+radius,top+n);c.stroke();c.beginPath();c.moveTo(centerX-radius+n,top);c.lineTo(centerX-radius+n,top+radius*2);c.stroke();}
-  // The rectangular stitch field fits inside the hoop without stretching it.
+  // Match the live hoop: fill the circle and clip excess image at its edge.
   c.save();c.translate(artX,artY);c.scale(artWidth/W,artHeight/H);
   for(let layer=0;layer<2;layer++)zones.forEach(z=>{const item=z.layers[layer];if(item)c.drawImage(item.canvas,z.bounds.x,z.bounds.y,z.bounds.w,z.bounds.h);});c.restore();c.restore();
   c.strokeStyle='#bea07a';c.lineWidth=20;c.beginPath();c.arc(centerX,centerY,radius-8,0,Math.PI*2);c.stroke();
