@@ -85,3 +85,6 @@ footer p,footer>span{font-size:13px;line-height:1.5;color:#68705d}footer{flex-wr
 /* The stitch count is the main progress readout. */
 .progress>div:last-child{display:flex;flex-direction:column;gap:5px;min-width:0}#garden-count{order:-1;display:block;font-size:clamp(24px,2.3vw,32px);font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2;letter-spacing:-.8px;color:#444e37}#garden-status{font-size:14px;line-height:1.4}.garden-toolbar{gap:20px}.progress{flex-shrink:0}.sewing-box .sample-button>span:last-child{margin-left:0}
 @media(max-width:520px){#garden-count{font-size:26px}.progress{gap:10px}.garden-toolbar{gap:18px}}
+
+/* The cursor's pointed tip is the hover target, just like a real needle. */
+@media(hover:hover) and (pointer:fine){.art-frame,.art-frame *{cursor:url('assets/needle-cursor.svg') 3 29,crosshair}.art-frame:has(.reference-view:not([hidden])),.art-frame:has(.reference-view:not([hidden])) *{cursor:default}}
