@@ -9,3 +9,4 @@ These preferences were explicitly established by the user:
 - Use progress layout B by default: finish beside the stitch count, guide and start-over beneath.
 - Keep the paper treatment for the progress area. Use physical stitched-linen samples and photographic spools in wooden compartments for the lower options, without paperclips. Keep icons and labels aligned.
 - Use landscape reference photo placement B, with a dotted upload card behind it.
+- Keep the Detail and Thread size titles on small paper labels above the wooden compartments.
