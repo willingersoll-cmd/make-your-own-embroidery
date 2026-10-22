@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Soft interfaces — an embroidery study</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="thread-engine.js" defer></script>
+  <script src="study.js" defer></script>
+</head>
+<body data-fabric="linen">
+  <div class="weave" aria-hidden="true"></div>
+  <header class="masthead">
+    <a class="wordmark" href="#">soft interfaces<span class="asterisk">✳</span></a>
+    <span class="edition">MATERIAL EXPLORATIONS &nbsp; / &nbsp; NO. 002</span>
+    <nav class="study-nav"><a class="small-link" href="tug.html">Tug a thread ↗</a><a class="small-link" href="garden.html">Garden ↗</a><a class="small-link" href="#motion">Patterns ↗</a><a class="small-link" href="#single-stitch">One stitch ↗</a></nav>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">A STUDY IN DIGITAL EMBROIDERY</p><h1>A little less <em>perfect.</em></h1></div>
+      <p class="intro-copy">Uneven stitches. Soft cotton fibers.<br>A thread that passes through the surface,<br class="desktop"> then pulls gently into place.</p>
+    </section>
+
+    <section class="workbench" aria-label="Interactive embroidery workbench">
+      <aside class="controls">
+        <p class="eyebrow">01 / THE MATERIAL</p>
+        <h2>Make yourself<br>comfortable.</h2>
+        <p class="muted">A quiet surface.<br>A small, tactile moment.</p>
+        <fieldset><legend>Ground cloth</legend><div class="segmented" id="fabrics"><button data-value="linen" aria-pressed="true">Linen</button><button data-value="paper" aria-pressed="false">Paper</button><button data-value="dusk" aria-pressed="false">Dusk</button></div></fieldset>
+        <fieldset><legend>Thread story <span id="palette-name">Meadow</span></legend><div class="palettes" id="palettes">
+          <button class="palette meadow" data-value="meadow" aria-label="Meadow threads" aria-pressed="true"><i></i><i></i><i></i><i></i></button>
+          <button class="palette rose" data-value="rose" aria-label="Rose threads" aria-pressed="false"><i></i><i></i><i></i><i></i></button>
+          <button class="palette cocoa" data-value="cocoa" aria-label="Cocoa threads" aria-pressed="false"><i></i><i></i><i></i><i></i></button>
+        </div></fieldset>
+        <div class="range-field"><label for="relief">Thread lift <output id="lift-value">Raised</output></label><input id="relief" type="range" min="0" max="100" value="65"><div class="range-ends"><span>Almost flat</span><span>Very tactile</span></div></div>
+        <div class="range-field fuzz-field"><label for="fuzz">Loose fibers <output id="fuzz-value">Fuzzy cotton</output></label><input id="fuzz" type="range" min="25" max="180" value="125"></div>
+        <p class="material-note"><span>↗</span> Try moving over the flower.<br>The light follows your hand.</p>
+      </aside>
+
+      <div class="specimen" id="specimen">
+        <div class="specimen-top"><span class="eyebrow"><span id="texture-status">COTTON FLOSS / UNEVEN BY HAND</span></span><button id="replay" class="text-button">↻ &nbsp; Stitch from center</button></div>
+        <div class="flower-stage" id="flower-stage" role="img" aria-label="Embroidered flower with six colored petals. Replay stitches all petals outward from the center together."></div>
+        <div class="specimen-bottom"><span class="sample-mark">A</span><p>Not placed on the surface.<br><em>Growing out of it.</em></p><span class="scale-note">6 STRANDS<br>COTTON THREAD</span></div>
+      </div>
+
+      <aside class="live-example">
+        <div class="example-heading"><p class="eyebrow">02 / A SMALL INTERACTION</p><span class="live-dot">LIVE</span></div>
+        <div class="phone-card">
+          <div class="phone-top"><button id="back" aria-label="Previous reflection">←</button><span id="step-label">01 / 06</span><span class="tiny-flower">✳</span></div>
+          <div class="progress-track"><span id="progress"></span></div>
+          <p class="card-eyebrow">A MOMENT FOR YOU</p>
+          <h2 id="question">How are you<br>arriving today?</h2>
+          <p class="phone-sub" id="question-sub">There’s no right way to feel.</p>
+          <div id="small-flower" class="small-flower" role="img" aria-label="Embroidered motif growing with each reflection"></div>
+          <div class="choices" id="choices"></div>
+          <button id="next" class="primary">One small stitch <span>→</span></button>
+          <p class="phone-foot" id="phone-foot" aria-live="polite">Your story, a little at a time.</p>
+        </div>
+        <p class="example-caption">Each answer adds a petal.<br>Progress becomes something you can feel.</p>
+      </aside>
+    </section>
+
+    <section class="motion-study" id="motion">
+      <div class="motion-copy"><p class="eyebrow">03 / A POINT OF CONNECTION</p><h2>Around, then<br>a little outward.</h2><p>Short stitches follow curved paths out from the center. A clockwise wave fills them in, one small step at a time. Move into the circle to begin.</p>
+        <fieldset class="motion-options"><legend>Shape</legend><div class="shape-options" id="shapes">
+          <button data-value="spiral" aria-pressed="true">Spiral <span>7 × 5 stitches</span></button><button data-value="rosette" aria-pressed="false">Rosette <span>8 × 4 stitches</span></button><button data-value="orbit" aria-pressed="false">Orbit <span>10 × 4 stitches</span></button><details class="earlier-shapes"><summary>Earlier shapes</summary><div class="earlier-options"><button data-value="sunburst" aria-pressed="false">Sunburst <span>12 threads</span></button><button data-value="bloom" aria-pressed="false">Flower <span>18 threads</span></button><button data-value="fan" aria-pressed="false">Fan <span>9 threads</span></button><button data-value="seed" aria-pressed="false">Seed <span>8 stitches</span></button><button data-value="petal" aria-pressed="false">Petal <span>12 stitches</span></button><button data-value="spark" aria-pressed="false">Spark <span>8 stitches</span></button><button data-value="leaf" aria-pressed="false">Original leaf <span>46 stitches</span></button></div></details>
+        </div></fieldset>
+        <fieldset class="motion-options"><legend>Yarn width</legend><div class="segmented" id="yarn-width"><button data-value="1" aria-pressed="true">Cotton</button><button data-value="0.55" aria-pressed="false">Fine · 55%</button></div></fieldset>
+        <fieldset class="motion-options"><legend>Thread rise</legend><div class="segmented" id="thread-rise"><button data-value="0.25" aria-pressed="true">Low</button><button data-value="0.5" aria-pressed="false">Short</button><button data-value="1" aria-pressed="false">Original</button></div></fieldset>
+        <label class="guide-label"><input id="pencil-guide" type="checkbox" checked> Hand-drawn pencil guide</label>
+        <button id="motion-play" class="primary">↻ Stitch the spiral</button><label class="slow-label"><input id="slow" type="checkbox"> Slow it down</label></div>
+      <div class="motion-swatch"><div class="macro-top"><span class="eyebrow" id="motif-title">SPIRAL / 2.4 SECONDS</span><span id="motion-phase" aria-live="off">12 / 12 stitches · Pulled snug</span></div><div class="radial-stage" id="radial-stage"><button id="stitch-origin" class="stitch-origin" aria-label="Stitch outward from this point"><span aria-hidden="true">+</span></button><span class="origin-hint" id="origin-hint">Come a little closer</span><canvas id="stitch-macro" role="img" aria-label="A petal forming from twelve cotton stitches, using a low loop above the surface."></canvas></div><div class="scrubber"><label for="scrub">Follow the stitches</label><input type="range" id="scrub" min="0" max="1000" value="1000"><div><span>Pencil tracing</span><span>Stitches gather</span><span>Finished shape</span></div></div></div>
+    </section>
+
+    <section class="motion-study single-study" id="single-stitch">
+      <div class="motion-copy"><p class="eyebrow">04 / ONE STITCH, UNDER THE LENS</p><h2>Just the stitch.</h2><p>An individual stitch from Orbit, enlarged and turned horizontally. Pause anywhere to look at its ends, fibers, lift, and the way the cloth gathers as it pulls snug.</p>
+        <fieldset class="motion-options"><legend>Yarn width</legend><div class="segmented" id="single-width"><button data-value="1" aria-pressed="false">Cotton</button><button data-value="0.55" aria-pressed="true">Fine · 55%</button></div></fieldset>
+        <div class="range-field single-zoom"><label for="single-zoom">Magnification <output id="single-zoom-value">14×</output></label><input id="single-zoom" type="range" min="6" max="20" value="14"></div>
+        <div class="range-field single-tension"><label for="single-tension">Fabric tension <output id="single-tension-value">55%</output></label><input id="single-tension" type="range" min="0" max="100" value="55"><div class="range-ends"><span>Flat cloth</span><span>More gathering</span></div></div>
+        <fieldset class="motion-options"><legend>Inspect a moment</legend><div class="single-moments"><button data-at="0">Guide</button><button data-at="0.24">Rise</button><button data-at="0.65">Pull</button><button data-at="1">Snug</button></div></fieldset>
+        <label class="guide-label"><input id="single-guide" type="checkbox" checked> Pencil guide</label><button id="single-play" class="primary">↻ Replay this stitch</button><label class="slow-label"><input id="single-slow" type="checkbox"> Half speed</label>
+      </div>
+      <div class="motion-swatch"><div class="macro-top"><span class="eyebrow">ONE ORBIT STITCH / ENLARGED</span><span id="single-phase">Seated in the cloth</span></div><canvas id="single-canvas" role="img" aria-label="One enlarged embroidery stitch, shown alone for inspection."></canvas><div class="scrubber"><label for="single-scrub">Inspect the full motion <output id="single-time">100%</output></label><input id="single-scrub" type="range" min="0" max="1000" value="1000"><div><span>Comes through</span><span>Lifts</span><span>Pulls snug</span></div></div></div>
+    </section>
+
+    <section class="applications" id="details">
+      <div class="section-title"><p class="eyebrow">05 / A LANGUAGE, NOT A THEME</p><h2>Small stitches. Useful places.</h2><p>Keep the everyday interface clear.<br>Let the thread mark what matters.</p></div>
+      <div class="samples">
+        <article class="sample"><div class="sample-art seam-art"><span>YOUR WEEK</span><div class="stitched-track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="seam-caption">A little further every day.</span></div><div class="sample-copy"><span>01</span><div><h3>Progress you can touch</h3><p>A running stitch quietly fills in.<br>Continuity without a score.</p></div></div></article>
+        <article class="sample"><div class="sample-art bookmark-art"><div id="tiny-leaf"></div><p>A thought to keep.</p><button class="save-button" id="save" aria-pressed="false">Save a moment <span>＋</span></button></div><div class="sample-copy"><span>02</span><div><h3>A mark of care</h3><p>A small thread detail for the things<br>you choose to hold on to.</p></div></div></article>
+        <article class="sample"><div class="sample-art done-art"><div id="knot"></div><p>Enough for today.</p><span>A soft place to finish.</span></div><div class="sample-copy"><span>03</span><div><h3>A quieter kind of reward</h3><p>A finished knot. A moment of rest.<br>No confetti required.</p></div></div></article>
+      </div>
+    </section>
+    <footer><span>SOFT INTERFACES &nbsp; / &nbsp; MATERIAL STUDY 002</span><p>A little tension. A softer surface.</p><a href="#">Back to the workbench ↑</a></footer>
+  </main>
+</body>
+</html>
