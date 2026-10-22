@@ -25,7 +25,8 @@ indexStitches();
 const hoverRadius=64;
 function status(){
   const done=stitches.filter(s=>s.state==='done').length;
-  document.querySelector('#garden-count').textContent=`${done.toLocaleString()} / ${stitches.length.toLocaleString()} stitches`;
+  document.querySelector('#count-completed').textContent=done.toLocaleString();
+  document.querySelector('#count-total').textContent=stitches.length.toLocaleString();
   document.querySelector('#garden-status').textContent=stitches.length>0&&done===stitches.length?'Finished':pending.size?'Stitching…':done?'Keep stitching':'Ready';
   if(stitches.length>0&&done===stitches.length)document.querySelector('#frame-label').textContent='';
   const hint=document.querySelector('#canvas-hint');if(hint)hint.hidden=done>0||pending.size>0;
@@ -101,7 +102,7 @@ document.querySelector('#reset').onclick=()=>{
   document.querySelector('#frame-label').textContent='';status();render();
 };
 document.querySelector('#reference-toggle').onclick=e=>{
-  const view=document.querySelector('#reference-view');view.hidden=!view.hidden;e.currentTarget.setAttribute('aria-pressed',String(!view.hidden));e.currentTarget.textContent=view.hidden?(uploadedImage?'View original':'View reference'):'Back to embroidery ↙';
+  const view=document.querySelector('#reference-view');view.hidden=!view.hidden;e.currentTarget.setAttribute('aria-pressed',String(!view.hidden));e.currentTarget.textContent=view.hidden?(uploadedImage?'View original':'View reference'):'Back to embroidery';
   document.querySelector('#sections').inert=!view.hidden;
 };
 ThreadStudy.imageReady.then(()=>{ready=true;status();render();document.querySelector('#art-frame').dataset.ready='true';reconvert();});
