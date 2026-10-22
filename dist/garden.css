@@ -337,3 +337,14 @@ html[data-material=linen] .sewing-box .segmented button[aria-pressed=true],html[
 
 /* The hint is centered on the cloth, independent of its own label size. */
 .art-frame>.canvas-hint{top:50%;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);max-width:calc(100% - 40px);text-align:center}
+
+/* Reference-print placement studies: only a slim edge stays under the box. */
+html[data-photo=left] .reference-print{left:18px;right:auto;bottom:-146px;width:170px;transform:rotate(6deg)}
+html[data-photo=left] .reference-print img{height:124px}
+html[data-photo=landscape] .reference-print{left:auto;right:18px;bottom:-123px;width:220px;transform:rotate(-5deg)}
+html[data-photo=landscape] .reference-print img{height:102px}
+html[data-photo=corner] .reference-print{left:auto;right:-18px;bottom:-142px;width:170px;transform:rotate(-10deg)}
+html[data-photo=corner] .reference-print img{height:124px}
+html[data-photo] .reference-print:hover,html[data-photo] .reference-print:focus-visible,html[data-photo] .reference-print[aria-pressed=true]{transform:translateY(5px) rotate(0deg)}
+@media(min-width:901px) and (max-height:740px){html[data-photo] .reference-print{width:132px;bottom:-104px;padding:6px}html[data-photo] .reference-print img{height:85px}html[data-photo=landscape] .reference-print{width:175px;bottom:-98px}html[data-photo=landscape] .reference-print img{height:78px}}
+@media(max-width:900px){html[data-photo] .box-assembly{margin-bottom:165px}html[data-photo=corner] .reference-print{right:0}}

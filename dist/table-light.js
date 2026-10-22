@@ -1,5 +1,7 @@
 /* A photographic canopy, blended over the worktable like real shade. */
 (()=>{
+  const photo=new URLSearchParams(location.search).get('photo');
+  if(['left','landscape','corner'].includes(photo))document.documentElement.dataset.photo=photo;
   const material=new URLSearchParams(location.search).get('material');
   document.documentElement.dataset.material=['paper','brass','linen'].includes(material)?material:'paper';
   const layout=new URLSearchParams(location.search).get('layout');
