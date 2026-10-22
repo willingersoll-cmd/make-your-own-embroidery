@@ -365,3 +365,9 @@ html[data-photo] .reference-print:hover,html[data-photo] .reference-print:focus-
 @media(min-width:901px) and (max-height:740px){.reference-upload{padding:13px 11px}.reference-upload strong{font-size:16px;max-width:105px}.reference-upload span{font:13px/1.35 var(--ui);max-width:105px}.outer-upload-message{top:calc(100% + 125px)}}
 
 .reference-upload{align-items:center;text-align:center}.reference-upload strong,.reference-upload span{margin-left:auto;margin-right:auto;text-align:center}
+
+/* Matched photographic spool views occupy the same sample window. */
+.sewing-box .size-options i,.sewing-box .size-options button:nth-child(2) i,.sewing-box .size-options button:nth-child(3) i{width:54px;height:54px;top:8px;left:50%;margin:0;transform:translateX(-50%);border-radius:0;background:transparent url('assets/photographic-spools.png') left center/300% 100% no-repeat;box-shadow:none;filter:drop-shadow(0 2px 1px #59422b18)}
+.sewing-box .size-options button:nth-child(2) i{background-position:center center}.sewing-box .size-options button:nth-child(3) i{background-position:right center}
+.sewing-box .size-options i:before,.sewing-box .size-options i:after{display:none}
+@media(min-width:901px) and (max-height:740px){.sewing-box .size-options i,.sewing-box .size-options button:nth-child(2) i,.sewing-box .size-options button:nth-child(3) i{top:5px;width:50px;height:50px}}
