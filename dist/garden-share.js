@@ -47,17 +47,33 @@ function buildCard(){
   c.lineWidth=.6;c.strokeStyle='#9586640b';for(let n=0;n<card.height;n+=4){c.beginPath();c.moveTo(0,n);c.lineTo(1080,n);c.stroke();}for(let n=0;n<1080;n+=4){c.beginPath();c.moveTo(n,0);c.lineTo(n,card.height);c.stroke();}
   const top=story?420:172,radius=378,centerX=540,centerY=top+radius,artHeight=radius*2,artWidth=artHeight*W/H,artX=centerX-artWidth/2,artY=centerY-artHeight/2;
   c.textAlign='center';
-  c.fillStyle='#4a513c';c.font='400 64px "Are You Serious"';c.fillText('Made of thread.',540,story?363:125);
+  c.fillStyle='#4a513c';c.font='400 58px "Are You Serious"';c.fillText('I embroidered this for you.',540,story?363:125);
   c.save();c.beginPath();c.arc(centerX,centerY,radius-11,0,Math.PI*2);c.clip();
-  c.fillStyle='#eae4d1';c.fillRect(centerX-radius,top,radius*2,radius*2);
-  c.strokeStyle='#8e805013';c.lineWidth=.65;for(let n=0;n<radius*2;n+=3){c.beginPath();c.moveTo(centerX-radius,top+n);c.lineTo(centerX+radius,top+n);c.stroke();c.beginPath();c.moveTo(centerX-radius+n,top);c.lineTo(centerX-radius+n,top+radius*2);c.stroke();}
+  // Warm, uneven linen with paired warp/weft fibers and a softly recessed edge.
+  const linen=c.createRadialGradient(430,centerY-160,30,540,centerY,radius);
+  linen.addColorStop(0,'#f5efdd');linen.addColorStop(.78,'#eae1c9');linen.addColorStop(1,'#d5c5a6');
+  c.fillStyle=linen;c.fillRect(centerX-radius,top,radius*2,radius*2);
+  for(let i=0;i<760;i++){
+    const n=i*1.03,wobble=Math.sin(i*17.31)*.35;
+    c.lineWidth=i%3===0?.9:.55;c.strokeStyle=i%2?'#fff9e85c':'#88745426';
+    c.beginPath();c.moveTo(centerX-radius+n,top);c.bezierCurveTo(centerX-radius+n+wobble,top+250,centerX-radius+n-wobble,top+500,centerX-radius+n,top+756);c.stroke();
+    c.beginPath();c.moveTo(centerX-radius,top+n);c.bezierCurveTo(350,top+n+wobble,700,top+n-wobble,centerX+radius,top+n);c.stroke();
+  }
   // Match the live hoop: fill the circle and clip excess image at its edge.
   c.save();c.translate(artX,artY);c.scale(artWidth/W,artHeight/H);
   for(let layer=0;layer<2;layer++)zones.forEach(z=>{const item=z.layers[layer];if(item)c.drawImage(item.canvas,z.bounds.x,z.bounds.y,z.bounds.w,z.bounds.h);});c.restore();c.restore();
-  c.strokeStyle='#bea07a';c.lineWidth=20;c.beginPath();c.arc(centerX,centerY,radius-8,0,Math.PI*2);c.stroke();
-  c.strokeStyle='#dbc7a4';c.lineWidth=2;c.beginPath();c.arc(centerX,centerY,radius-19,0,Math.PI*2);c.stroke();
-  c.fillStyle='#c4a47c';c.fillRect(centerX-22,top-21,14,30);c.fillRect(centerX+8,top-21,14,30);
-  c.fillStyle='#bca35f';c.fillRect(centerX-33,top-16,66,7);c.fillStyle='#d2bd7c';c.fillRect(centerX+29,top-20,8,15);
+  // Two rounded beech rings, with a soft contact shadow and fine grain.
+  c.save();c.shadowColor='#5b412b36';c.shadowBlur=26;c.shadowOffsetY=12;
+  const wood=c.createLinearGradient(180,top,860,top+756);
+  wood.addColorStop(0,'#dfc49b');wood.addColorStop(.3,'#c29969');wood.addColorStop(.55,'#edd4ae');wood.addColorStop(1,'#a77a4e');
+  c.strokeStyle=wood;c.lineWidth=25;c.beginPath();c.arc(centerX,centerY,radius-7,0,Math.PI*2);c.stroke();c.restore();
+  for(let i=0;i<12;i++){c.strokeStyle=i%3?'#6e472b12':'#fff0d342';c.lineWidth=.65;c.beginPath();c.arc(centerX,centerY,radius-18+i*1.9,0,Math.PI*2);c.stroke();}
+  c.strokeStyle='#8e643747';c.lineWidth=2;c.beginPath();c.arc(centerX,centerY,radius-21,0,Math.PI*2);c.stroke();
+  c.strokeStyle='#f9e8c7a6';c.lineWidth=1.8;c.beginPath();c.arc(centerX,centerY,radius+5,Math.PI,Math.PI*1.9);c.stroke();
+  c.fillStyle=wood;c.fillRect(centerX-24,top-25,16,33);c.fillRect(centerX+8,top-25,16,33);
+  const brass=c.createLinearGradient(0,top-22,0,top-8);brass.addColorStop(0,'#ebd99a');brass.addColorStop(.45,'#b89a4f');brass.addColorStop(1,'#796335');
+  c.fillStyle=brass;c.fillRect(centerX-36,top-20,72,8);c.fillRect(centerX+30,top-25,10,18);
+  c.strokeStyle='#7c663e';c.lineWidth=1;for(let i=0;i<5;i++){c.beginPath();c.moveTo(centerX+31+i*1.7,top-24);c.lineTo(centerX+31+i*1.7,top-8);c.stroke();}
   const bottom=top+radius*2;rosette(c,540,bottom+(story?130:42),story?44:30);
   c.fillStyle='#a8ad95';c.font='400 30px "Are You Serious"';c.fillText('little thread.',540,story?1570:1050);
   if(story){c.strokeStyle='#c7cbb6';c.lineWidth=2;c.setLineDash([4,6]);c.beginPath();c.moveTo(440,1640);c.bezierCurveTo(510,1600,560,1710,640,1660);c.stroke();}
@@ -87,7 +103,7 @@ function downloadCard(){if(!shareFile||!cardURL)return;const a=document.createEl
 async function nativeShare(destination){
   if(!shareFile)return;
   if(navigator.canShare?.({files:[shareFile]})){
-    try{await navigator.share({files:[shareFile],title:'My embroidery',text:'Made with Little Thread.'});shareNote.textContent='Shared.';}catch(error){if(error.name!=='AbortError'){downloadCard();shareNote.textContent='Sharing wasn’t available. Your card is saved — attach it in '+destination+'.';}}
+    try{await navigator.share({files:[shareFile],title:'I embroidered this for you',text:'I embroidered this for you.'});shareNote.textContent='Shared.';}catch(error){if(error.name!=='AbortError'){downloadCard();shareNote.textContent='Sharing wasn’t available. Your card is saved — attach it in '+destination+'.';}}
   }else{downloadCard();shareNote.textContent='Card saved. '+(destination==='Instagram'?'Open Instagram and choose the saved image for your post or story.':destination==='Messages'?'Open Messages and attach the saved image to a conversation.':'You can attach it in Messages, X, or Instagram.');}
 }
 document.querySelector('#native-share').onclick=()=>nativeShare('your favorite app');
@@ -95,7 +111,7 @@ document.querySelector('#share-messages').onclick=()=>nativeShare('Messages');
 document.querySelector('#share-instagram').onclick=()=>nativeShare('Instagram');
 document.querySelector('#share-x').onclick=()=>{
   if(!shareFile)return;downloadCard();
-  window.open('https://x.com/intent/post?text='+encodeURIComponent('Made a little something, one stitch at a time. ♡'),'_blank','noopener,noreferrer');
+  window.open('https://x.com/intent/post?text='+encodeURIComponent('I embroidered this for you.'),'_blank','noopener,noreferrer');
   shareNote.textContent='Card saved and X opened. Attach '+shareFile.name+' to your post.';
 };
 document.querySelector('#download-card').onclick=()=>{downloadCard();shareNote.textContent='Image saved.';toast('Image saved');};
