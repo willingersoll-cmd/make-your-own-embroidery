@@ -163,3 +163,7 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 @media(min-width:901px) and (max-width:1150px){.introduction{margin-left:215px}.introduction .invitation{font-size:30px}}
 @media(max-width:900px){.brand{font-size:32px}.introduction .invitation{font-size:35px;line-height:1.25}}
 @media(max-width:520px){.brand{font-size:30px}.introduction .invitation{font-size:32px;line-height:1.3}.canvas-hint{font-size:24px}#share-dialog .share-copy h2{font-size:36px}}
+
+/* One canopy falls over the table and every object, without blocking input. */
+.sunlight-layer{position:fixed;inset:0;width:100%;height:100dvh;z-index:30;pointer-events:none!important;filter:blur(5px);opacity:.95;contain:strict}
+.sunlight-fallback:after{content:'';position:fixed;inset:0;z-index:30;pointer-events:none;background:radial-gradient(ellipse 13% 7% at 15% 24%,#42512a16,transparent 75%),radial-gradient(ellipse 9% 15% at 36% 53%,#42512a1c,transparent 78%),radial-gradient(ellipse 14% 8% at 72% 19%,#42512a1a,transparent 75%),radial-gradient(ellipse 8% 17% at 85% 67%,#42512a18,transparent 78%),radial-gradient(ellipse 17% 10% at 51% 83%,#42512a17,transparent 80%);filter:blur(7px)}
