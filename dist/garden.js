@@ -44,8 +44,8 @@ function activateAt(x,y){
   const nearby=new Set();for(let row=Math.floor((y-hoverRadius)/64);row<=Math.floor((y+hoverRadius)/64);row++)for(let col=Math.floor((x-hoverRadius)/64);col<=Math.floor((x+hoverRadius)/64);col++)for(const s of spatial.get(col+','+row)||[])nearby.add(s);
   nearby.forEach(s=>{
     const distance=Math.min(Math.hypot(s.a.x-x,s.a.y-y),Math.hypot(s.b.x-x,s.b.y-y),Math.hypot((s.a.x+s.b.x)/2-x,(s.a.y+s.b.y)/2-y));
-    // Radius follows r = R * t², so its arrival time is sqrt(r / R).
-    if(distance<hoverRadius)beginStitch(s,x,y,now,Math.sqrt(distance/hoverRadius)*500);
+    // A tiny outward ripple keeps hover responsive; easing belongs to each strand.
+    if(distance<hoverRadius)beginStitch(s,x,y,now,distance/hoverRadius*55);
   });
   if(pending.size&&!frame){status();frame=requestAnimationFrame(tick);}
 }
@@ -72,7 +72,7 @@ function tick(now){
       if(now<s.start||active>=limit)return;
       s.animationStart=now;active++;
     }
-    const progress=instant?1:Math.max(0,Math.min(1,(now-s.animationStart)/(uploadedImage?340:480)));
+    const progress=instant?1:Math.max(0,Math.min(1,(now-s.animationStart)/(s.lightweight?280:320)));
     if(progress>=1&&performance.now()<deadline){
       ThreadStudy.fieldStitch(ensureLayer(s.zone,s.layer).ctx,s.oriented);
       s.state='done';pending.delete(s);

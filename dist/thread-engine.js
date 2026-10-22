@@ -415,7 +415,7 @@ window.ThreadStudy = (() => {
   function needle(ctx,s,progress){
     const p=clamp(progress),reveal=smooth(p/.13)*(1-smooth((p-.82)/.18));
     if(reveal<.02)return;
-    const t=smooth(p),points=cubic(s.a,s.c,s.d,s.b,60),index=t*60,j=Math.min(59,Math.floor(index)),f=index-j;
+    const t=s.lightweight?p*p:smooth(p*p),points=cubic(s.a,s.c,s.d,s.b,60),index=t*60,j=Math.min(59,Math.floor(index)),f=index-j;
     const head={x:mix(points[j].x,points[j+1].x,f),y:mix(points[j].y,points[j+1].y,f)};
     const angle=Math.atan2(points[j+1].y-points[j].y,points[j+1].x-points[j].x)-.38*(1-smooth(p/.65))+.24*smooth((p-.7)/.3);
     const length=24*reveal,width=1.3;
@@ -431,8 +431,13 @@ window.ThreadStudy = (() => {
     if(s.lightweight){
       // Image fields can contain thousands of strands. Layered plies retain
       // cotton detail without a filtered photograph and dozens of hairs per frame.
-      const reach=smooth(clamp(p)),points=cubic(s.a,s.c,s.d,s.b,16),n=Math.max(1,Math.ceil(reach*16)),visible=points.slice(0,n+1);
       if(p<=0)return;
+      // Quadratic ease-in: emerge gently, then pull tight with no slow tail.
+      // Interpolate the moving tip so short strands never jump between samples.
+      const reach=clamp(p)**2,points=cubic(s.a,s.c,s.d,s.b,16),position=reach*16;
+      const n=Math.min(15,Math.floor(position)),fraction=position-n;
+      const visible=points.slice(0,n+1);
+      visible.push({x:mix(points[n].x,points[n+1].x,fraction),y:mix(points[n].y,points[n+1].y,fraction)});
       const width=s.width;
       ctx.save();ctx.translate(.25,.5);stroke(ctx,visible,width*.7,'#62574416');ctx.restore();
       taperedStroke(ctx,visible,width,color(s.color,-12));
@@ -443,7 +448,7 @@ window.ThreadStudy = (() => {
       return;
     }
     if(p>=1)cotton(ctx,cubic(s.a,s.c,s.d,s.b,8),s.color,s.width,s.seed,.35,.32);
-    else if(p>0)movingStitch(ctx,s,s.color,p,{lift:.35,fuzz:.32,rise:.18,samples:12,punctures:false});
+    else if(p>0)movingStitch(ctx,s,s.color,p*p,{lift:.35,fuzz:.32,rise:.18,samples:12,punctures:false});
   }
   function looseThread(ctx,points,hex,width,seed,slack=0){
     cotton(ctx,points,hex,width,seed,.45,.75,slack*.25);
