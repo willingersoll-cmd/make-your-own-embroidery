@@ -6,3 +6,4 @@ These preferences were explicitly established by the user:
 - Keep functional labels readable (normally 14 px or larger), with balanced alignment and consistent spacing.
 - Keep the complete desktop sewing controls and hoop within a normal laptop viewport.
 - Keep copy concise and purposeful. Do not add an eyebrow or promotional headline above the instructions.
+- Use progress layout B by default: finish beside the stitch count, guide and start-over beneath.
