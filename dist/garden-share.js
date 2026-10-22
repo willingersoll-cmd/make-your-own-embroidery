@@ -75,7 +75,7 @@ async function prepareCard(){
     shareBlob=blob;shareFile=new File([blob],format==='story'?'little-thread-story.png':'little-thread-postcard.png',{type:'image/png'});
     if(cardURL)URL.revokeObjectURL(cardURL);cardURL=URL.createObjectURL(blob);document.querySelector('#share-preview').src=cardURL;
     document.querySelectorAll('#share-dialog button').forEach(b=>b.disabled=false);
-    document.querySelector('#native-share').textContent=navigator.canShare?.({files:[shareFile]})?'Share image ↗':'Save image ↓';
+    document.querySelector('#native-share').textContent=navigator.canShare?.({files:[shareFile]})?'Share image':'Save image ↓';
     document.querySelector('#download-card').hidden=!navigator.canShare?.({files:[shareFile]});shareNote.textContent='';placeShareDialog();
   }catch{shareNote.textContent='Couldn’t make the card. Close this window and try again.';}
 }
