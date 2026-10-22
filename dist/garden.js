@@ -225,4 +225,3 @@ function reconvert(){
 }
 document.querySelector('#stitch-size').onchange=reconvert;
 document.querySelector('#line-detail').onchange=reconvert;
-document.querySelector('#sample-garden').onclick=()=>location.reload();
