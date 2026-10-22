@@ -47,7 +47,7 @@ function buildCard(){
   c.lineWidth=.6;c.strokeStyle='#9586640b';for(let n=0;n<card.height;n+=4){c.beginPath();c.moveTo(0,n);c.lineTo(1080,n);c.stroke();}for(let n=0;n<1080;n+=4){c.beginPath();c.moveTo(n,0);c.lineTo(n,card.height);c.stroke();}
   const top=story?420:172,radius=378,centerX=540,centerY=top+radius,artHeight=radius*2,artWidth=artHeight*W/H,artX=centerX-artWidth/2,artY=centerY-artHeight/2;
   c.textAlign='center';
-  c.fillStyle='#4a513c';c.font='400 58px "Are You Serious"';c.fillText('I embroidered this for you.',540,story?363:125);
+  c.fillStyle='#4a513c';c.font='400 58px "Nothing You Could Do"';c.fillText('I embroidered this for you.',540,story?363:125);
   c.save();c.beginPath();c.arc(centerX,centerY,radius-11,0,Math.PI*2);c.clip();
   // Warm, uneven linen with paired warp/weft fibers and a softly recessed edge.
   const linen=c.createRadialGradient(430,centerY-160,30,540,centerY,radius);
@@ -75,7 +75,7 @@ function buildCard(){
   c.fillStyle=brass;c.fillRect(centerX-36,top-20,72,8);c.fillRect(centerX+30,top-25,10,18);
   c.strokeStyle='#7c663e';c.lineWidth=1;for(let i=0;i<5;i++){c.beginPath();c.moveTo(centerX+31+i*1.7,top-24);c.lineTo(centerX+31+i*1.7,top-8);c.stroke();}
   const bottom=top+radius*2;rosette(c,540,bottom+(story?130:42),story?44:30);
-  c.fillStyle='#a8ad95';c.font='400 30px "Are You Serious"';c.fillText('little thread.',540,story?1570:1050);
+  c.fillStyle='#a8ad95';c.font='400 30px "Nothing You Could Do"';c.fillText('little thread.',540,story?1570:1050);
   if(story){c.strokeStyle='#c7cbb6';c.lineWidth=2;c.setLineDash([4,6]);c.beginPath();c.moveTo(440,1640);c.bezierCurveTo(510,1600,560,1710,640,1660);c.stroke();}
   return card;
 }
@@ -85,7 +85,7 @@ async function prepareCard(){
   shareNote.textContent='Preparing image…';
   document.querySelector('.share-card-placeholder').classList.toggle('story',format==='story');
   try{
-    await document.fonts.load('400 64px "Are You Serious"');
+    await document.fonts.load('400 64px "Nothing You Could Do"');
     const blob=await new Promise(resolve=>buildCard().toBlob(resolve,'image/png'));
     if(!blob)throw new Error('Export failed');if(version!==cardVersion)return;
     shareBlob=blob;shareFile=new File([blob],format==='story'?'little-thread-story.png':'little-thread-postcard.png',{type:'image/png'});

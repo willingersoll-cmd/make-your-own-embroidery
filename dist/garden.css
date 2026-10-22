@@ -18,8 +18,8 @@
 @media(max-width:740px){.hoop-holder>.completion{bottom:13%;padding:12px;gap:8px}.hoop-holder>.completion h3{font-size:21px}.hoop-holder>.completion p:last-child{display:none}#share-dialog{padding:24px 20px}}
 
 /* One headline; the remaining type labels a control, state, or next action. */
-@font-face{font-family:'Are You Serious';src:url('assets/are-you-serious-regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
-:root{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--hand:'Are You Serious',sans-serif}
+@font-face{font-family:'Nothing You Could Do';src:url('assets/nothing-you-could-do.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+:root{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--hand:'Nothing You Could Do',sans-serif}
 .site-header{border:0;padding-top:26px;padding-bottom:0}.brand{font-family:var(--hand);font-size:22px;font-weight:500;letter-spacing:-1px}.brand svg{width:32px;height:32px}
 .introduction{display:block;padding:40px 0 32px}.introduction h1{font-family:var(--hand);font-size:clamp(38px,5.8vw,78px);font-weight:500;line-height:1.1;letter-spacing:-3px;max-width:1100px}.introduction h1 em{font-style:normal;font-weight:500;color:#a15e47}.invitation{font:14px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#757c65;margin:22px 0 0}
 .upload-bar{padding:20px}.source-section{margin-bottom:22px}.upload-button strong{font-size:13px}.upload-sub{font-size:10px}.control-label{font-size:12px;letter-spacing:0}.board-heading{justify-content:flex-end;padding:12px 3px}.board-heading>button{font-size:11px}.frame-label{display:none}#upload-message:empty,#share-note:empty{display:none}.needle-option strong{font-size:12px}.needle-option span{line-height:1.4}
@@ -157,7 +157,7 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 /* Cover the hoop with the image field, keeping the original image proportions. */
 #garden-canvas,#sections{left:-11.328125%;top:0;width:122.65625%;height:100%}.reference-view img{inset:0;width:100%;height:100%;object-fit:cover}
 
-/* Are You Serious has a finer script and needs more size than the old lettering. */
+/* Nothing You Could Do has a finer script and needs more size than the old lettering. */
 .brand{font-family:var(--hand);font-weight:400;font-size:32px;line-height:1;letter-spacing:0}.introduction .invitation{font-family:var(--hand);font-weight:400;font-size:36px;line-height:1.25;letter-spacing:0}.hoop-holder>.completion h3{font:400 38px/1.1 var(--hand);letter-spacing:0}#share-dialog .share-copy h2{font:400 40px/1.15 var(--hand);letter-spacing:0}.canvas-hint{font-family:var(--hand);font-style:normal;font-size:25px;line-height:1.2}
 @media(min-width:901px){.brand{font-size:31px}.introduction .invitation{font-size:34px;line-height:1.2}.introduction{margin-left:235px}}
 @media(min-width:901px) and (max-width:1150px){.introduction{margin-left:215px}.introduction .invitation{font-size:30px}}
@@ -216,3 +216,8 @@ body{background-color:#dce3e5;background-image:linear-gradient(120deg,#f7fafb55,
 .sewing-box .guide-toggle input,.sewing-box .needle-option input{background:#c1cfd4;border-color:#a6b8c1}.sewing-box .guide-toggle input:checked,.sewing-box .needle-option input:checked{background:#456779;border-color:#456779}.sewing-box .guide-toggle input:before,.sewing-box .needle-option input:before{background:#fbfcfa}
 .art-frame{background-color:#f0f2ec;background-image:repeating-linear-gradient(0deg,#56647009 0,#ffffff55 1px,transparent 1.5px,transparent 3px),repeating-linear-gradient(90deg,#56647009 0,#ffffff44 1px,transparent 1.5px,transparent 3px);box-shadow:1px 14px 25px -7px #253e4f20,inset 0 0 40px #536b7412}.art-frame:before{border-color:#9baeb6;box-shadow:inset 0 2px 5px #30495726,0 0 0 1px #7e969e40;background:none}.art-frame:after{background:radial-gradient(ellipse at 40% 20%,#ffffff18,transparent 80%)}
 .canvas-hint,.board-heading>button,.hoop-holder>.completion{background:#f4f6f1;border:1px solid #c8d2d3;box-shadow:0 2px 7px #30495710;transform:none;color:#3a5565}.board-heading>button:hover{background:#fff;transform:none}.tree-shadow{opacity:.38}footer,footer p,footer>span{color:#627c89}footer{border-color:#849aa324}#share-dialog{background:#f4f6f1;border-color:#c5d0d4;color:#304b5b}
+
+/* Airier handwriting, with a compact, proportionate finish action. */
+.brand{font-size:27px}.introduction .invitation{font-size:25px;line-height:1.4}.canvas-hint{font-size:22px}.hoop-holder>.completion h3{font-size:30px}#share-dialog .share-copy h2{font-size:30px}
+.sewing-box .finish-button{justify-self:center;width:auto;min-width:174px;min-height:38px;padding:7px 22px;font-size:16px;line-height:1.35;border-radius:4px}
+@media(max-width:520px){.brand{font-size:25px}.introduction .invitation{font-size:23px}.sewing-box .finish-button{min-height:40px}}
