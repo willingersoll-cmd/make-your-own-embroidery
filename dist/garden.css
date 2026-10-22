@@ -280,3 +280,29 @@ body:has(.art-frame[data-stitching=true]) .sewing-pointer svg{opacity:1}
 .box-lid{box-shadow:inset 0 1px 4px #5b463318,0 1px #8e7559,0 5px 7px -3px #57432d38}
 .art-frame{box-shadow:inset 0 0 40px #8c795317,0 1px 2px #654b3233,2px 5px 6px -2px #58432d38,8px 18px 22px -9px #60462f4a,14px 36px 48px -18px #60462f30}
 .art-frame:before{box-shadow:inset 0 2px 5px #654b323d,inset 0 -1px 2px #ffffff55,0 0 0 1px #9c815e55}
+/* Physical material studies, enabled only by an explicit material query. */
+html[data-material] .sewing-box .garden-toolbar{position:relative;margin-top:14px}
+html[data-material] .sewing-box .upload-options fieldset{margin-top:13px;padding-top:17px}
+html[data-material] .sewing-box .control-label{position:relative;z-index:1;box-shadow:none;transform:none}
+/* A: paper swatch cards, held in place by real-looking wire clips. */
+html[data-material=paper] .sewing-box .garden-toolbar,html[data-material=paper] .sewing-box .upload-options fieldset{background:linear-gradient(105deg,#fffdf5,#f1ebdc);border:1px solid #d4c9b3;border-radius:1px;box-shadow:1px 3px 4px #634a2e22,inset 0 1px #fff;}
+html[data-material=paper] .sewing-box .garden-toolbar:before,html[data-material=paper] .sewing-box .upload-options fieldset:before{content:'';position:absolute;top:-12px;right:23px;width:10px;height:28px;border:2px solid #a7a8a0;border-radius:8px;box-shadow:inset 1px 0 #fefdf6,1px 1px 1px #554e3930;transform:rotate(9deg);z-index:2}
+html[data-material=paper] .sewing-box .upload-options fieldset:before{right:13px;top:-18px;height:25px;width:8px;transform:rotate(-8deg)}
+html[data-material=paper] .sewing-box .progress{padding-bottom:5px;border-bottom:1px solid #ddd4bf}
+html[data-material=paper] .sewing-box .segmented button,html[data-material=paper] .sewing-box .size-options button{border:0;border-radius:0;border-right:1px solid #d9cfb9}
+html[data-material=paper] .sewing-box .segmented button:last-child,html[data-material=paper] .sewing-box .size-options button:last-child{border-right:0}
+html[data-material=paper] .sewing-box .control-label{background:#f8f3e7;font-style:italic;padding:1px 7px;color:#716550}
+html[data-material=paper] .sewing-box .garden-toolbar:after{content:'';position:absolute;left:17px;right:17px;top:8px;border-top:1px solid #e0d7c4}
+/* B: small satin-brass label holders and recessed wood compartments. */
+html[data-material=brass] .sewing-box .garden-toolbar{border:5px solid #a98d5f;border-radius:3px;background:linear-gradient(115deg,#eadbb6,#f4ebd4 45%,#e1cca0);box-shadow:inset 0 0 0 1px #fff5,0 2px 4px #5c452a32}
+html[data-material=brass] .sewing-box .garden-toolbar:before,html[data-material=brass] .sewing-box .garden-toolbar:after{content:'';position:absolute;top:5px;width:5px;height:5px;border-radius:50%;background:linear-gradient(135deg,#efe4c0 35%,#77603b 40% 53%,#cfb57c 58%);box-shadow:0 1px 1px #5d4b2b40}
+html[data-material=brass] .sewing-box .garden-toolbar:before{left:5px}html[data-material=brass] .sewing-box .garden-toolbar:after{right:5px}
+html[data-material=brass] .sewing-box .control-label{background:linear-gradient(110deg,#c4aa75,#e7d6a9,#bca16f);border:1px solid #a68d61;border-radius:2px;padding:3px 10px;color:#5b4e36;box-shadow:0 1px 2px #6b513224;text-shadow:0 1px #fff6}
+html[data-material=brass] .sewing-box .upload-options fieldset{background:#e7dfcf;border:2px solid #bca27b;box-shadow:inset 0 3px 5px #6e563025,0 1px #ead8b8}
+html[data-material=brass] .sewing-box .segmented button[aria-pressed=true],html[data-material=brass] .sewing-box .size-options button[aria-pressed=true]{background:#f8f4e7;border-color:#c4b591;box-shadow:0 2px 3px #6e563022}
+/* C: unbleached textile pockets with folded hems and fine seam lines. */
+html[data-material=linen] .sewing-box .garden-toolbar,html[data-material=linen] .sewing-box .upload-options fieldset{background:#f0eada url('assets/afternoon-linen.svg') center/260px;border:1px solid #d0c4ac;border-radius:2px;box-shadow:0 3px 5px #6b51322b,inset 0 0 0 4px #ece5d7}
+html[data-material=linen] .sewing-box .garden-toolbar:before,html[data-material=linen] .sewing-box .upload-options fieldset:before{content:'';position:absolute;inset:5px;border:1px dashed #b9ac9199;border-radius:1px;pointer-events:none}
+html[data-material=linen] .sewing-box .control-label{background:#e5dbc4;border:1px solid #cfc1a6;padding:3px 9px;box-shadow:1px 2px 2px #6e56301c;font:19px var(--hand);line-height:1.2}
+html[data-material=linen] .sewing-box .progress{border-bottom:1px solid #cbbfa6;padding-bottom:7px;box-shadow:0 1px #fffc}
+html[data-material=linen] .sewing-box .segmented button[aria-pressed=true],html[data-material=linen] .sewing-box .size-options button[aria-pressed=true]{background:#e0e4d3;border:1px solid #acb397;box-shadow:inset 0 0 0 2px #f4f0e255}
