@@ -194,8 +194,8 @@ button,input,select{font-family:var(--ui)}
 
 /* The supplied leaf photograph: white disappears into the table through multiply. */
 .tree-shadow{position:fixed;inset:-4%;z-index:30;pointer-events:none!important;background:url('assets/tree-shadows.jpg') center top/cover no-repeat;mix-blend-mode:multiply;opacity:.58;transform-origin:50% 50%;will-change:transform;animation:canopy-rustle 17s ease-in-out infinite}
-@keyframes canopy-rustle{0%,100%{transform:translate(-.5%,0) rotate(-.35deg) scale(1.025) scaleY(-1)}28%{transform:translate(.65%,.4%) rotate(.4deg) scale(1.035) scaleY(-1)}53%{transform:translate(.1%,-.3%) rotate(-.15deg) scale(1.02) scaleY(-1)}76%{transform:translate(-.4%,.3%) rotate(.25deg) scale(1.03) scaleY(-1)}}
-@media(prefers-reduced-motion:reduce){.tree-shadow{animation:none;will-change:auto;transform:scale(1.025) scaleY(-1)}}
+@keyframes canopy-rustle{0%,100%{transform:translate(-.5%,0) rotate(-.35deg) scale(1.025)}28%{transform:translate(.65%,.4%) rotate(.4deg) scale(1.035)}53%{transform:translate(.1%,-.3%) rotate(-.15deg) scale(1.02)}76%{transform:translate(-.4%,.3%) rotate(.25deg) scale(1.03)}}
+@media(prefers-reduced-motion:reduce){.tree-shadow{animation:none;will-change:auto;transform:scale(1.025)}}
 
 /* Keep the guide setting together as one compact control. */
 .sewing-box .guide-toggle{justify-content:flex-start;gap:10px;width:fit-content}
@@ -238,3 +238,30 @@ body{background-color:#e7d6ba;background-image:linear-gradient(125deg,#fff6dc8c,
 .canvas-hint,.board-heading>button,.hoop-holder>.completion{background:#faf7ef;border-color:#d7cfbc;color:#5b624c}.board-heading>button:hover{background:#fffdf5}.tree-shadow{opacity:.44}footer,footer p,footer>span{color:#7c7d67}footer{border-color:#a7977424}#share-dialog{background:#faf7ef;border-color:#d7cfbc;color:#4d5641}
 
 .sewing-box .needle-option img{width:36px;height:30px;object-fit:contain;flex-shrink:0;transform:rotate(24deg);filter:drop-shadow(0 1px 1px #47382525)}
+
+/* Compact progress frees room for the image slot and tangible thread samples. */
+.sewing-box .garden-toolbar{padding:12px 14px;gap:10px}
+.sewing-box .progress>div:last-child{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+.sewing-box #garden-count{justify-content:flex-start;flex-wrap:nowrap;gap:5px}.sewing-box #garden-status{width:auto;max-width:none;text-align:right;white-space:nowrap}
+.sewing-box .actions{gap:8px 16px}.sewing-box .finish-button{justify-self:start;min-width:156px;min-height:38px;padding:7px 18px}
+.sewing-box .source-section{grid-template-columns:minmax(0,1fr) 104px;padding:9px 10px}.sewing-box .upload-button{min-height:132px;border:1px solid #d0c7b4;box-shadow:inset 0 2px 5px #6956360c,0 1px 0 #ffffff88;background:linear-gradient(145deg,#fffdf7,#f5f1e7)}
+.sewing-box .upload-options fieldset{padding:7px 6px 10px}.sewing-box .control-label{margin-bottom:6px;transform:none;box-shadow:none}
+.sewing-box .segmented button{min-height:82px;padding:48px 1px 9px}.sewing-box .segmented button:before{top:21px;height:11px}.sewing-box .segmented button:first-child:before{top:26px}.sewing-box .segmented button:last-child:before{top:18px;height:16px}
+.sewing-box .size-options button{min-height:82px;padding:9px 0 8px}.sewing-box .size-options i{height:29px;margin:3px auto 18px}
+html[data-progress-layout=inline] .sewing-box .garden-toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
+html[data-progress-layout=inline] .sewing-box .progress{grid-column:1;grid-row:1;width:auto;justify-content:flex-start}
+html[data-progress-layout=inline] .sewing-box .progress>div:last-child{flex-direction:column;align-items:flex-start;gap:2px}
+html[data-progress-layout=inline] .sewing-box .count-completed{font-size:28px}html[data-progress-layout=inline] .sewing-box .count-total{font-size:21px}html[data-progress-layout=inline] .sewing-box .count-unit{font-size:15px}
+html[data-progress-layout=inline] .sewing-box .actions{display:contents}
+html[data-progress-layout=inline] .sewing-box .finish-button{grid-column:2;grid-row:1;min-width:0;padding:8px 12px;justify-self:end}
+html[data-progress-layout=inline] .sewing-box .guide-toggle{grid-column:1;grid-row:2}
+html[data-progress-layout=inline] .sewing-box #reset{grid-column:2;grid-row:2;justify-self:end}
+html[data-progress-layout=footer] .sewing-box .progress>div:last-child{flex-direction:column;align-items:flex-start;gap:2px}
+html[data-progress-layout=footer] .sewing-box .actions{grid-template-columns:1fr auto}
+html[data-progress-layout=footer] .sewing-box .guide-toggle{grid-column:1/-1;grid-row:1}
+html[data-progress-layout=footer] .sewing-box .finish-button{grid-column:1;grid-row:2}
+html[data-progress-layout=footer] .sewing-box #reset{grid-column:2;grid-row:2;justify-self:end}
+@media(min-width:901px) and (max-height:740px){.sewing-box .garden-toolbar{padding:9px 12px;gap:7px}.sewing-box .actions{padding-top:6px;gap:6px 12px}.sewing-box .upload-button{min-height:114px}.sewing-box .segmented button,.sewing-box .size-options button{min-height:76px}.sewing-box .segmented button{padding-top:43px}.sewing-box .size-options i{height:27px;margin-bottom:14px}.sewing-box .source-section{padding:7px 9px}}
+.tree-shadow{opacity:.38}
+
+html[data-progress-layout=inline] .sewing-box .finish-button{align-self:center}html[data-progress-layout=inline] .sewing-box #garden-status,html[data-progress-layout=footer] .sewing-box #garden-status{align-self:flex-start;text-align:left}
