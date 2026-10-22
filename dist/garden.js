@@ -26,8 +26,8 @@ const hoverRadius=64;
 function status(){
   const done=stitches.filter(s=>s.state==='done').length;
   document.querySelector('#garden-count').textContent=`${done.toLocaleString()} / ${stitches.length.toLocaleString()} stitches`;
-  document.querySelector('#garden-status').textContent=stitches.length>0&&done===stitches.length?(uploadedImage?'Your image, made of thread.':'A garden, made by your hand.'):pending.size?'Following your hand · stitching':done?'There’s a little more to discover.':'The first stitch is yours.';
-  if(stitches.length>0&&done===stitches.length)document.querySelector('#frame-label').textContent='A LITTLE SOMETHING, MADE BY YOU';
+  document.querySelector('#garden-status').textContent=stitches.length>0&&done===stitches.length?'Finished':pending.size?'Stitching…':done?'Keep stitching':'Ready';
+  if(stitches.length>0&&done===stitches.length)document.querySelector('#frame-label').textContent='';
   const hint=document.querySelector('#canvas-hint');if(hint)hint.hidden=done>0||pending.size>0;
   document.querySelectorAll('.progress-stitches i').forEach((el,i)=>el.style.opacity=(done/stitches.length*6>i?1:.2));
   window.updateEmbroideryCompletion?.(done,stitches.length);
@@ -98,10 +98,10 @@ document.querySelector('#reveal-all').onclick=()=>{if(!ready)return;const now=pe
 document.querySelector('#reset').onclick=()=>{
   cancelAnimationFrame(frame);frame=0;pending.clear();stitches.forEach(s=>{s.state='waiting';s.oriented=null;s.instant=false;s.animationStart=undefined;});
   zones.forEach(z=>{z.active=false;z.complete=false;z.done=0;z.progress=0;z.layers=[];});
-  document.querySelector('#frame-label').textContent='FOLLOW YOUR CURIOSITY';status();render();
+  document.querySelector('#frame-label').textContent='';status();render();
 };
 document.querySelector('#reference-toggle').onclick=e=>{
-  const view=document.querySelector('#reference-view');view.hidden=!view.hidden;e.currentTarget.setAttribute('aria-pressed',String(!view.hidden));e.currentTarget.textContent=view.hidden?(uploadedImage?'View original ↗':'View reference ↗'):'Back to the stitches ↙';
+  const view=document.querySelector('#reference-view');view.hidden=!view.hidden;e.currentTarget.setAttribute('aria-pressed',String(!view.hidden));e.currentTarget.textContent=view.hidden?(uploadedImage?'View original ↗':'View reference ↗'):'Back to embroidery ↙';
   document.querySelector('#sections').inert=!view.hidden;
 };
 ThreadStudy.imageReady.then(()=>{ready=true;status();render();document.querySelector('#art-frame').dataset.ready='true';reconvert();});
@@ -180,7 +180,7 @@ function outlineSamples(source,step,detail){
 }
 
 async function convertImage(image,filename){
-  const token=++conversion,bar=document.querySelector('.upload-bar');bar.classList.add('busy');message.textContent='Finding thread colors and laying out stitches…';
+  const token=++conversion,bar=document.querySelector('.upload-bar');bar.classList.add('busy');message.textContent='Preparing stitches…';
   await new Promise(resolve=>setTimeout(resolve,30));
   try{
     const sample=document.createElement('canvas');sample.width=W;sample.height=H;const sx=sample.getContext('2d',{willReadFrequently:true});
@@ -207,8 +207,8 @@ async function convertImage(image,filename){
     uploadedImage=image;document.querySelector('#reference-view img').src=uploadedURL;document.querySelector('#reference-view img').alt='Your uploaded source image';
     document.querySelector('#reference-view').hidden=true;sections.inert=false;const ref=document.querySelector('#reference-toggle');ref.setAttribute('aria-pressed','false');ref.textContent='View original ↗';
     canvas.setAttribute('aria-label','Your uploaded image converted into individual cotton stitches. Move over the cloth to reveal the embroidery.');
-    document.querySelector('#frame-label').textContent='FOLLOW YOUR CURIOSITY';document.querySelector('#artwork-caption').textContent=filename+' · Line embroidery · '+palette.length+' thread colors';
-    message.textContent=`Ready · ${stitches.length.toLocaleString()} stitches, ${palette.length} thread colors · line embroidery. Hover over the cloth to begin.`;status();render();
+    document.querySelector('#frame-label').textContent='';document.querySelector('#artwork-caption').textContent=filename+' · '+palette.length+' colors';
+    message.textContent='';status();render();
   }catch(error){message.textContent=error.message||'Could not convert this image. Try a different file.';}finally{if(token===conversion)bar.classList.remove('busy');}
 }
 upload.onchange=async()=>{
