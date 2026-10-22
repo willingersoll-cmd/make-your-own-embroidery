@@ -319,3 +319,7 @@ html[data-material=linen] .sewing-box .segmented button[aria-pressed=true],html[
 
 /* Center the instruction in the space beside the brand. */
 .introduction{display:flex;justify-content:center;text-align:center;max-width:none}.introduction .invitation{text-align:center;margin:0 auto;max-width:100%}
+
+/* Match the instruction's centerline to the hoop column. */
+@media(min-width:901px){.introduction{margin-left:468px}.introduction .invitation{font-size:23px;line-height:1.35}.introduction .invitation br{display:initial}}
+@media(min-width:901px) and (max-width:1150px){.introduction{margin-left:442px}.introduction .invitation{font-size:21px}}
