@@ -412,6 +412,21 @@ window.ThreadStudy = (() => {
     return p===0?'Pencil guide':p<.2?'Thread emerges':p<.55?'Lifts toward you':p<.91?'Pulls into place':'Seated in the cloth';
   }
   function stop(canvas){if(canvas?._threadFrame){cancelAnimationFrame(canvas._threadFrame);canvas._threadFrame=0;}}
+  function needle(ctx,s,progress){
+    const p=clamp(progress),reveal=smooth(p/.13)*(1-smooth((p-.82)/.18));
+    if(reveal<.02)return;
+    const t=smooth(p),points=cubic(s.a,s.c,s.d,s.b,60),index=t*60,j=Math.min(59,Math.floor(index)),f=index-j;
+    const head={x:mix(points[j].x,points[j+1].x,f),y:mix(points[j].y,points[j+1].y,f)};
+    const angle=Math.atan2(points[j+1].y-points[j].y,points[j+1].x-points[j].x)-.38*(1-smooth(p/.65))+.24*smooth((p-.7)/.3);
+    const length=24*reveal,width=1.3;
+    ctx.save();ctx.translate(head.x,head.y);ctx.rotate(angle);ctx.globalAlpha=.95;
+    ctx.save();ctx.translate(.4,1.2);ctx.beginPath();ctx.moveTo(-3,-width);ctx.lineTo(length,0);ctx.lineTo(-3,width);ctx.closePath();ctx.fillStyle='#5b594021';ctx.fill();ctx.restore();
+    const silver=ctx.createLinearGradient(0,-width,0,width);silver.addColorStop(0,'#f9fbf7');silver.addColorStop(.42,'#b6bdbb');silver.addColorStop(.58,'#e4e9e6');silver.addColorStop(1,'#858e8b');
+    ctx.fillStyle=silver;ctx.strokeStyle='#818b875c';ctx.lineWidth=.35;ctx.beginPath();ctx.moveTo(-3,-width);ctx.quadraticCurveTo(length*.45,-width*.75,length,0);ctx.quadraticCurveTo(length*.45,width*.75,-3,width);ctx.quadraticCurveTo(-5,0,-3,-width);ctx.fill();ctx.stroke();
+    ctx.beginPath();ctx.ellipse(-1.8,0,1.3,.48,0,0,TAU);ctx.fillStyle='#686e60';ctx.fill();
+    // One small colored turn connects the strand to the eye.
+    ctx.beginPath();ctx.moveTo(-5,1);ctx.quadraticCurveTo(-3,-1,-1.8,0);ctx.lineWidth=Math.min(.8,s.width*.5);ctx.strokeStyle=s.color;ctx.stroke();ctx.restore();
+  }
   function fieldStitch(ctx,s,p=1){
     if(s.lightweight){
       // Image fields can contain thousands of strands. Layered plies retain
@@ -444,5 +459,5 @@ window.ThreadStudy = (() => {
     clothResponse(ctx,s,tension,.35);hole(ctx,s.a,.65);hole(ctx,s.b,.65);
     cotton(ctx,points,s.color,s.width,s.seed,.5,.8,slack*.3);
   }
-  return {draw,macro,single,play,stop,imageReady,fieldStitch,looseThread,tugStitch};
+  return {draw,macro,single,play,stop,imageReady,fieldStitch,looseThread,tugStitch,needle};
 })();

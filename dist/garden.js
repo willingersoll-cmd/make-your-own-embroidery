@@ -49,12 +49,18 @@ function activateAt(x,y){
   });
   if(pending.size&&!frame){status();frame=requestAnimationFrame(tick);}
 }
+let liveStitches=[],needleLead=null;
 function render(live=[]){
+  liveStitches=live;
   ctx.clearRect(0,0,W,H);if(document.querySelector('#guides').checked)ctx.drawImage(guideCanvas,0,0,W,H);
   for(let layer=0;layer<2;layer++){
     zones.forEach(z=>{const item=z.layers[layer];if(item)ctx.drawImage(item.canvas,z.bounds.x,z.bounds.y,z.bounds.w,z.bounds.h);});
     live.filter(item=>item.s.layer===layer).forEach(item=>ThreadStudy.fieldStitch(ctx,item.s,item.p));
   }
+  if(document.querySelector('#needle-toggle').checked&&live.length){
+    const lead=live.find(item=>item.s===needleLead)||live[0];needleLead=lead.s;
+    ThreadStudy.needle(ctx,lead.s,lead.p);
+  }else needleLead=null;
 }
 function tick(now){
   frame=0;const live=[],deadline=performance.now()+7;
@@ -86,7 +92,8 @@ frameEl.onpointermove=e=>{
 };
 frameEl.onpointerleave=()=>{ring.style.display='none';};
 frameEl.onpointerdown=e=>{if(e.pointerType==='touch'){const r=canvas.getBoundingClientRect();activateAt((e.clientX-r.left)/r.width*W,(e.clientY-r.top)/r.height*H);}};
-document.querySelector('#guides').onchange=()=>render();
+document.querySelector('#guides').onchange=()=>render(liveStitches);
+document.querySelector('#needle-toggle').onchange=()=>render(liveStitches);
 document.querySelector('#reveal-all').onclick=()=>{if(!ready)return;const now=performance.now();stitches.forEach(s=>{beginStitch(s,0,H,now);s.instant=true;});status();if(!frame)frame=requestAnimationFrame(tick);};
 document.querySelector('#reset').onclick=()=>{
   cancelAnimationFrame(frame);frame=0;pending.clear();stitches.forEach(s=>{s.state='waiting';s.oriented=null;s.instant=false;s.animationStart=undefined;});
