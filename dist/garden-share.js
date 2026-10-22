@@ -47,7 +47,7 @@ function buildCard(){
   c.lineWidth=.6;c.strokeStyle='#9586640b';for(let n=0;n<card.height;n+=4){c.beginPath();c.moveTo(0,n);c.lineTo(1080,n);c.stroke();}for(let n=0;n<1080;n+=4){c.beginPath();c.moveTo(n,0);c.lineTo(n,card.height);c.stroke();}
   const top=story?420:172,radius=378,centerX=540,centerY=top+radius,artHeight=radius*2,artWidth=artHeight*W/H,artX=centerX-artWidth/2,artY=centerY-artHeight/2;
   c.textAlign='center';
-  c.fillStyle='#4a513c';c.font='500 49px "Shantell Sans"';c.fillText('Made of thread.',540,story?363:125);
+  c.fillStyle='#4a513c';c.font='400 64px "Are You Serious"';c.fillText('Made of thread.',540,story?363:125);
   c.save();c.beginPath();c.arc(centerX,centerY,radius-11,0,Math.PI*2);c.clip();
   c.fillStyle='#eae4d1';c.fillRect(centerX-radius,top,radius*2,radius*2);
   c.strokeStyle='#8e805013';c.lineWidth=.65;for(let n=0;n<radius*2;n+=3){c.beginPath();c.moveTo(centerX-radius,top+n);c.lineTo(centerX+radius,top+n);c.stroke();c.beginPath();c.moveTo(centerX-radius+n,top);c.lineTo(centerX-radius+n,top+radius*2);c.stroke();}
@@ -59,7 +59,7 @@ function buildCard(){
   c.fillStyle='#c4a47c';c.fillRect(centerX-22,top-21,14,30);c.fillRect(centerX+8,top-21,14,30);
   c.fillStyle='#bca35f';c.fillRect(centerX-33,top-16,66,7);c.fillStyle='#d2bd7c';c.fillRect(centerX+29,top-20,8,15);
   const bottom=top+radius*2;rosette(c,540,bottom+(story?130:42),story?44:30);
-  c.fillStyle='#a8ad95';c.font='500 19px "Shantell Sans"';c.fillText('little thread.',540,story?1570:1050);
+  c.fillStyle='#a8ad95';c.font='400 30px "Are You Serious"';c.fillText('little thread.',540,story?1570:1050);
   if(story){c.strokeStyle='#c7cbb6';c.lineWidth=2;c.setLineDash([4,6]);c.beginPath();c.moveTo(440,1640);c.bezierCurveTo(510,1600,560,1710,640,1660);c.stroke();}
   return card;
 }
@@ -69,7 +69,7 @@ async function prepareCard(){
   shareNote.textContent='Preparing image…';
   document.querySelector('.share-card-placeholder').classList.toggle('story',format==='story');
   try{
-    await document.fonts.load('500 49px "Shantell Sans"');
+    await document.fonts.load('400 64px "Are You Serious"');
     const blob=await new Promise(resolve=>buildCard().toBlob(resolve,'image/png'));
     if(!blob)throw new Error('Export failed');if(version!==cardVersion)return;
     shareBlob=blob;shareFile=new File([blob],format==='story'?'little-thread-story.png':'little-thread-postcard.png',{type:'image/png'});

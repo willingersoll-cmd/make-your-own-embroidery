@@ -18,8 +18,8 @@
 @media(max-width:740px){.hoop-holder>.completion{bottom:13%;padding:12px;gap:8px}.hoop-holder>.completion h3{font-size:21px}.hoop-holder>.completion p:last-child{display:none}#share-dialog{padding:24px 20px}}
 
 /* One headline; the remaining type labels a control, state, or next action. */
-@font-face{font-family:'Shantell Sans';src:url('assets/shantell-sans-medium.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
-:root{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--hand:'Shantell Sans',sans-serif}
+@font-face{font-family:'Are You Serious';src:url('assets/are-you-serious-regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+:root{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--hand:'Are You Serious',sans-serif}
 .site-header{border:0;padding-top:26px;padding-bottom:0}.brand{font-family:var(--hand);font-size:22px;font-weight:500;letter-spacing:-1px}.brand svg{width:32px;height:32px}
 .introduction{display:block;padding:40px 0 32px}.introduction h1{font-family:var(--hand);font-size:clamp(38px,5.8vw,78px);font-weight:500;line-height:1.1;letter-spacing:-3px;max-width:1100px}.introduction h1 em{font-style:normal;font-weight:500;color:#a15e47}.invitation{font:14px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#757c65;margin:22px 0 0}
 .upload-bar{padding:20px}.source-section{margin-bottom:22px}.upload-button strong{font-size:13px}.upload-sub{font-size:10px}.control-label{font-size:12px;letter-spacing:0}.board-heading{justify-content:flex-end;padding:12px 3px}.board-heading>button{font-size:11px}.frame-label{display:none}#upload-message:empty,#share-note:empty{display:none}.needle-option strong{font-size:12px}.needle-option span{line-height:1.4}
@@ -156,3 +156,10 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 
 /* Cover the hoop with the image field, keeping the original image proportions. */
 #garden-canvas,#sections{left:-11.328125%;top:0;width:122.65625%;height:100%}.reference-view img{inset:0;width:100%;height:100%;object-fit:cover}
+
+/* Are You Serious has a finer script and needs more size than the old lettering. */
+.brand{font-family:var(--hand);font-weight:400;font-size:32px;line-height:1;letter-spacing:0}.introduction .invitation{font-family:var(--hand);font-weight:400;font-size:36px;line-height:1.25;letter-spacing:0}.hoop-holder>.completion h3{font:400 38px/1.1 var(--hand);letter-spacing:0}#share-dialog .share-copy h2{font:400 40px/1.15 var(--hand);letter-spacing:0}.canvas-hint{font-family:var(--hand);font-style:normal;font-size:25px;line-height:1.2}
+@media(min-width:901px){.brand{font-size:31px}.introduction .invitation{font-size:34px;line-height:1.2}.introduction{margin-left:235px}}
+@media(min-width:901px) and (max-width:1150px){.introduction{margin-left:215px}.introduction .invitation{font-size:30px}}
+@media(max-width:900px){.brand{font-size:32px}.introduction .invitation{font-size:35px;line-height:1.25}}
+@media(max-width:520px){.brand{font-size:30px}.introduction .invitation{font-size:32px;line-height:1.3}.canvas-hint{font-size:24px}#share-dialog .share-copy h2{font-size:36px}}
