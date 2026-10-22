@@ -180,3 +180,7 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 @media(min-width:901px){.sewing-box .garden-toolbar{padding:12px 14px;gap:10px}.sewing-box #garden-count{font-size:24px}.sewing-box .actions{gap:8px 20px;padding-top:8px}.sewing-box .finish-button{min-height:42px}}
 @media(max-width:900px) and (min-width:521px){.sewing-box .garden-toolbar{display:flex;flex-direction:column}.sewing-box .actions{grid-template-columns:minmax(0,1fr) auto}.sewing-box .finish-button{grid-column:1/-1}.sewing-box .progress{justify-content:center;text-align:center}}
 @media(max-width:520px){.sewing-box .garden-toolbar{padding:14px;gap:12px}.sewing-box #garden-count{font-size:24px}.sewing-box .guide-toggle{font-size:14px}.sewing-box #reset{font-size:14px}.count-completed{font-size:32px}}
+
+/* Give the image drop zone more breathing room without growing the other controls. */
+.sewing-box .upload-button{min-height:96px;display:flex;flex-direction:column;justify-content:center}
+@media(min-width:901px){.sewing-box .upload-button{min-height:88px}}
