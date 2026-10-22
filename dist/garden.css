@@ -117,3 +117,8 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 .introduction{padding:27px 0 26px;max-width:850px}.introduction h1{font-size:clamp(34px,3.8vw,52px);line-height:1.16;letter-spacing:-1.6px;max-width:820px}.invitation{font-size:18px;line-height:1.5;margin:15px 0 0;max-width:580px;color:#535b43}.site-header{padding-top:22px}
 @media(max-width:900px){.introduction{padding-top:25px;padding-bottom:25px}.introduction h1{font-size:clamp(32px,4.7vw,42px);letter-spacing:-1px}.invitation{font-size:17px;line-height:1.5;margin-top:14px;max-width:520px}}
 @media(max-width:520px){.introduction{padding-top:24px;padding-bottom:23px}.introduction h1{font-size:30px;line-height:1.2;letter-spacing:-.8px}.invitation{font-size:16px;line-height:1.5;margin-top:13px;max-width:340px}.site-header{padding-top:18px}}
+
+/* The introduction is the instruction, with no separate headline. */
+.introduction{padding:25px 0 28px;max-width:900px}.introduction .invitation{font:500 clamp(24px,2.2vw,29px)/1.45 var(--hand);letter-spacing:-.6px;color:#394532;max-width:850px;margin:0}.intro-share{color:#985238}
+@media(max-width:900px){.introduction{padding:25px 0 26px}.introduction .invitation{font-size:25px;line-height:1.45;max-width:650px}}
+@media(max-width:520px){.introduction{padding:25px 0 24px}.introduction .invitation{font-size:22px;line-height:1.5;letter-spacing:-.4px}.introduction .invitation br{display:none}}
