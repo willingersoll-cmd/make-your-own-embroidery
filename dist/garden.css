@@ -184,3 +184,13 @@ footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,fo
 /* Give the image drop zone more breathing room without growing the other controls. */
 .sewing-box .upload-button{min-height:96px;display:flex;flex-direction:column;justify-content:center}
 @media(min-width:901px){.sewing-box .upload-button{min-height:88px}}
+
+/* Warm book typography for the working labels; script stays on personal copy. */
+:root{--ui:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;font-family:var(--ui)}
+button,input,select{font-family:var(--ui)}
+.sewing-box .control-label,.sewing-box .guide-toggle>span,.sewing-box #reset,.sewing-box .needle-option strong{font-size:16px;font-weight:400;letter-spacing:0}
+.sewing-box .upload-button strong{font-size:18px;font-weight:600}.sewing-box .upload-sub{font-size:14px}
+.sewing-box .segmented button,.sewing-box .size-options button,.sewing-box .sample-button{font-size:16px;letter-spacing:0}
+.sewing-box .finish-button{font-size:18px;font-weight:400}.sewing-box #garden-status{font-size:15px}
+.count-completed{font-weight:600}.count-total{font-weight:400}.count-unit{font-size:17px}
+.board-heading>button{font-size:16px}#share-dialog .format-control button,#share-dialog .share-destinations button,#share-dialog .share-utilities button{font-size:16px}#share-dialog .share-copy>.sewn-button{font-size:18px}
