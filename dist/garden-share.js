@@ -2,6 +2,23 @@
 const completion=document.querySelector('#completion'),shareDialog=document.querySelector('#share-dialog');
 let completed=false,shareFile=null,shareBlob=null,cardURL=null,cardVersion=0,format='square',toastTimer;
 const shareNote=document.querySelector('#share-note');
+// Keep the completion invitation and share sheet over the actual stitched work.
+document.querySelector('.hoop-holder').append(completion);
+function placeShareDialog(){
+  if(!shareDialog.open)return;
+  const hoop=document.querySelector('#art-frame').getBoundingClientRect();
+  const viewport=window.visualViewport;
+  const vw=viewport?.width??innerWidth,vh=viewport?.height??innerHeight;
+  const ox=viewport?.offsetLeft??0,oy=viewport?.offsetTop??0;
+  shareDialog.style.width=Math.min(400,vw-32,Math.max(260,hoop.width-32))+'px';
+  shareDialog.style.maxHeight=Math.max(160,vh-32)+'px';
+  const sheet=shareDialog.getBoundingClientRect();
+  shareDialog.style.left=(ox+Math.max(16,Math.min(vw-sheet.width-16,hoop.left+hoop.width/2-ox-sheet.width/2)))+'px';
+  shareDialog.style.top=(oy+Math.max(16,Math.min(vh-sheet.height-16,hoop.top+hoop.height/2-oy-sheet.height/2)))+'px';
+}
+addEventListener('resize',placeShareDialog);
+addEventListener('scroll',placeShareDialog,{passive:true});
+window.visualViewport?.addEventListener('resize',placeShareDialog);
 window.updateEmbroideryCompletion=(done,total)=>{
   const next=total>0&&done===total;
   completion.hidden=!next;
@@ -59,10 +76,10 @@ async function prepareCard(){
     if(cardURL)URL.revokeObjectURL(cardURL);cardURL=URL.createObjectURL(blob);document.querySelector('#share-preview').src=cardURL;
     document.querySelectorAll('#share-dialog button').forEach(b=>b.disabled=false);
     document.querySelector('#native-share').textContent=navigator.canShare?.({files:[shareFile]})?'Share your little masterpiece ↗':'Save your little masterpiece ↓';
-    shareNote.textContent='Messages opens your device’s share sheet when available. X and Instagram can use the saved card.';
+    shareNote.textContent='Messages opens your device’s share sheet when available. X and Instagram can use the saved card.';placeShareDialog();
   }catch{shareNote.textContent='Couldn’t make the card. Close this window and try again.';}
 }
-document.querySelector('#open-share').onclick=()=>{if(!completed)return;shareDialog.showModal();prepareCard();};
+document.querySelector('#open-share').onclick=()=>{if(!completed)return;shareDialog.showModal();placeShareDialog();prepareCard();};
 document.querySelector('#close-share').onclick=()=>shareDialog.close();
 shareDialog.addEventListener('click',e=>{if(e.target===shareDialog){const r=shareDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)shareDialog.close();}});
 document.querySelectorAll('[data-format]').forEach(button=>button.onclick=()=>{format=button.dataset.format;document.querySelectorAll('[data-format]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));prepareCard();});
