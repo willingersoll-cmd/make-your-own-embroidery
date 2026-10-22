@@ -95,3 +95,20 @@ footer p,footer>span{font-size:13px;line-height:1.5;color:#68705d}footer{flex-wr
 .sewing-box .actions{display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:10px;width:100%;align-items:center}.sewing-box .guide-toggle{font-size:15px;min-height:44px;color:#536047;gap:8px}.sewing-box #reset{width:44px;height:44px;min-width:44px;border:1px solid #c5bca1;border-radius:50%;background:linear-gradient(120deg,#fffbee,#e7dfc8);box-shadow:0 1px 3px #6b5c3c20,inset 0 1px 0 #fff8;color:#687359;font-size:24px;padding:0}.sewing-box #reset:hover{background:#fff9e6}.sewing-box .finish-button{grid-column:1/-1;width:100%;min-height:46px;font-size:16px;background:#7c8864;color:#fffef0;border:1px dashed #dae0c0;outline:3px solid #7c8864;outline-offset:-1px;border-radius:5px;padding:11px 10px;box-shadow:0 2px 3px #52603a21;margin-top:2px}.sewing-box .finish-button:hover{background:#6b7954;outline-color:#6b7954}.sewing-box .finish-button:focus-visible{outline:2px solid var(--rust);outline-offset:4px}.garden{padding-bottom:16px}
 @media(max-width:900px){.sewing-box .garden-toolbar{margin-bottom:0}.sewing-box .actions{grid-template-columns:minmax(0,1fr) 44px minmax(0,1.25fr)}.sewing-box .finish-button{grid-column:auto;margin-top:0}.sewing-box .progress{text-align:left;justify-content:flex-start}}
 @media(max-width:520px){.sewing-box .garden-toolbar{padding:15px 12px;gap:13px}.sewing-box .actions{grid-template-columns:minmax(0,1fr) 44px}.sewing-box .finish-button{grid-column:1/-1}.sewing-box #garden-count{font-size:28px}.sewing-box .progress{text-align:center;justify-content:center}}
+
+/* A single oak worktable; only physical objects cast their own edges. */
+:root{--ground:#dfc9a7;background:var(--ground)}
+body{background-color:var(--ground);background-image:linear-gradient(110deg,#fff5 0%,#fffbeb13 48%,#8d623009 100%),url('assets/table-grain.svg'),repeating-linear-gradient(0deg,transparent 0 318px,#8b654314 318px 319px,#fff3 319px 320px);background-size:auto,768px 512px,auto;background-attachment:scroll;}
+.site-header{max-width:1440px;padding-top:25px}.brand{width:fit-content;padding:8px 12px;background:#f4edda;border:1px dashed #b8ad8a;border-radius:2px;box-shadow:1px 2px 4px #73562f1b;transform:rotate(-2deg)}
+.introduction{padding-top:35px}.introduction h1{color:#394532;text-shadow:0 1px #f8ead86b}.introduction h1 em{color:#985238}.invitation{color:#535b43}
+.editor-layout{position:relative;gap:38px;padding:10px 0 35px;align-items:start;}
+.upload-bar.sewing-box{transform:rotate(-.4deg);box-shadow:inset 0 2px 7px #5c432525,inset 0 0 0 2px #aa8a5e,0 1px 0 1px #97734f,0 8px 0 -1px #a67e55,3px 18px 27px -8px #5c402338;}
+.garden{position:sticky;top:20px;border:0;border-radius:0;background:none;box-shadow:none;padding:30px 0 15px;min-width:0;}
+.board-heading{position:relative;z-index:8;padding:0 20px 3px;min-height:44px;}
+.board-heading>button{background:#f3ecd6;border:1px dashed #b7ad8b;padding:9px 15px;min-height:42px;border-radius:2px;box-shadow:1px 2px 4px #6c512c1c;color:#596147;transform:rotate(2deg);}
+.board-heading>button:hover{background:#fff7e1;transform:rotate(0deg)}
+.hoop-holder{padding-top:32px;max-width:800px}.art-frame{box-shadow:2px 18px 30px -6px #74502e2b,0 3px 5px #6948290d,inset 0 0 55px #a8956020;}
+footer{border-top:1px solid #88684324;color:#596047;padding-top:18px}footer p,footer>span{color:#596047}
+@media(max-width:1100px) and (min-width:901px){.editor-layout{gap:26px}.garden{padding-top:18px}}
+@media(max-width:900px){.editor-layout{gap:28px;padding-top:8px}.garden{position:relative;top:auto;padding:0 0 20px}.upload-bar.sewing-box{transform:none}.board-heading{padding:0 12px 4px}.hoop-holder{padding-top:30px}.site-header{padding-top:21px}}
+@media(max-width:520px){.site-header{padding-top:19px}.brand{font-size:19px;padding:7px 10px}.introduction{padding-top:28px;padding-bottom:24px}.editor-layout{gap:28px}.board-heading>button{font-size:14px}.garden{padding-left:0;padding-right:0}.hoop-holder{padding-left:0;padding-right:0}}
